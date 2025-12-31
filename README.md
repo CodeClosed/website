@@ -9,7 +9,7 @@ A modern, responsive personal portfolio website designed to showcase my projects
 
 ## 🚀 Live Demo
 
-[**View Live Demo**](https://your-username.github.io/portfolio)
+[**View Live Demo**](http://www.vihaanvarshney.com/#home)
 
 ---
 
