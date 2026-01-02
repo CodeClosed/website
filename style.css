@@ -296,6 +296,10 @@ a:hover {
   color: var(--accent);
 }
 
+.timeline-content strong {
+  color: var(--accent);
+}
+
 /* Ensure the about section doesn't feel too cramped on wide screens */
 #about .glass-card {
   max-width: 900px;
