@@ -1,84 +1,75 @@
-# Vihaan Varshney - Portfolio Website
+# ⚡ Vihaan Varshney - Interactive Portfolio
 
-Welcome to my personal portfolio website repository! This project showcases my academic journey, skills, projects, and certifications as a B.Tech Computer Science and Engineering (AI & ML) student at VIT Vellore.
+A high-performance, responsive, and interactive personal portfolio website built with **Vanilla JavaScript, HTML5, and CSS3**. This project demonstrates advanced frontend techniques without relying on external frameworks.
 
 ## 🚀 Live Demo
+[**Click here to view the live site**](https://codeclosed.github.io/portfolio)
 
-[Link to Live Demo](https://codeclosed.github.io/portfolio) *(Replace with your actual deployment link if different)*
+## ✨ Key Features
 
-## ✨ Features
+### 🎨 Visuals & UI
+*   **Glassmorphism Aesthetic**: Modern, translucent UI elements using `backdrop-filter: blur`, simulating frosted glass.
+*   **Interactive Particle Engine**: Custom-built HTML5 Canvas animation where particles repel from the cursor and form connections dynamically.
+*   **Dark/Light Mode**: System-aware theme switching with manual override and `localStorage` persistence.
+*   **Scroll & Reveal Animations**: Content glides in using `IntersectionObserver` for an immersive scrolling experience.
 
-*   **Modern Design**: A clean, responsive interface featuring glassmorphism effects and dynamic gradients.
-*   **Dark/Light Mode**: Fully supported theme toggling with preference persistence using `localStorage`.
-*   **Interactive UI**:
-    *   Smooth scroll navigation.
-    *   Scroll reveal animations for sections and cards.
-    *   Custom horizontal timeline for Education history with touch/drag support, navigation arrows, and pagination dots.
-*   **Responsive Layout**: Optimized for desktops, tablets, and mobile devices with a hamburger menu for smaller screens.
-*   **Typography**: Utilizes Google Fonts (Outfit, Space Grotesk, and JetBrains Mono) for a modern and readable aesthetic.
+### 📱 Responsive & Mobile-First
+*   **Touch-Friendly Navigation**: A completely custom hamburger menu and sidebar optimized for mobile devices.
+*   **Draggable Timeline**: The education section features a horizontal scrolling timeline that supports touch swiping and drag-to-scroll on desktop.
+*   **Adaptive Layouts**: Fluid grids and flexbox layouts ensure the site looks perfect on 4K monitors, laptops, tablets, and phones.
 
-## 🛠️ Tech Stack
+## 🛠️ Technical Deep Dive
 
-*   **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-*   **Fonts**: Google Fonts
-*   **Icons**: SVG Icons
+### Frontend Architecture
+*   **Structure**: Semantic HTML5 for accessibility and SEO.
+*   **Styling**:
+    *   **CSS Custom Properties (Variables)**: Used extensively for consistent theming (colors, spacing, fonts).
+    *   **Flexbox & Grid**: For complex, responsive layouts.
+    *   **Keyframe Animations**: Pulse effects and transitions.
+*   **Scripting**:
+    *   **Classes**: Object-Oriented approach for the Particle system.
+    *   **Observers**: `IntersectionObserver` used for performance-friendly scroll animations (no scroll event listeners).
+    *   **Event Delegation**: Efficient handling of dynamic DOM elements.
+
+### Performance Optimizations
+*   **Canvas Optimization**: Particle animation uses efficient frame rendering and clears only necessary areas.
+*   **Asset Loading**: Minified images and deferred script loading.
+*   **Typing Effect**: Lightweight custom implementation without heavy libraries like Typed.js.
 
 ## 📂 Project Structure
 
-```
-├── index.html         # Main HTML structure
-├── style.css          # Global styles and theme definitions
-├── script.js          # Logic for theme toggle, animations, and timeline
-├── dark-hero-bg.png   # Hero background for dark mode
-├── light-hero-bg.png  # Hero background for light mode
-├── favicon/           # Favicon and PWA assets
-│   ├── favicon.ico
-│   ├── favicon-16x16.png
-│   ├── favicon-32x32.png
-│   ├── apple-touch-icon.png
-│   ├── android-chrome-192x192.png
-│   ├── android-chrome-512x512.png
-│   └── site.webmanifest
-└── README.md          # Project documentation
+```bash
+├── index.html         # Main entry point (Semantic Structure)
+├── style.css          # Design System, Themes, and Components
+├── script.js          # Logic (Particles, Theme, Observers, Typing)
+├── dark-hero-bg.png   # Optimized background asset
+├── light-hero-bg.png  # Optimized background asset
+└── favicon/           # PWA Manifest and Icons effect
 ```
 
-## ⚙️ Setup & Installation
+## ⚙️ How to Run Locally
 
-To run this project locally:
+Since this is a static site, you don't need `npm` or a build process!
 
-1.  **Clone the repository**:
+1.  **Clone the Repo**
     ```bash
     git clone https://github.com/CodeClosed/portfolio.git
-    ```
-2.  **Navigate to the project directory**:
-    ```bash
     cd portfolio
     ```
-3.  **Open `index.html`**:
-    Simply open the `index.html` file in your preferred web browser. No build step or server is required for this static site.
 
-    *(Optional) To replicate a production environment, you can use a live server extension in VS Code or run a simple python server:*
-    ```bash
-    python -m http.server
-    ```
+2.  **Launch**
+    *   Simply open `index.html` in Chrome, Firefox, or Edge.
+    *   *Optional (for best experience)*: Use VS Code "Live Server" extension or Python:
+        ```bash
+        python -m http.server 8000
+        ```
+        Then visit `http://localhost:8000`.
 
-## 🎨 Customization
+## 📬 Connect
 
-### Changing the Theme
-The website automatically detects your system's color scheme preference. You can manually toggle between Dark and Light modes using the moon/sun icon in the navigation bar.
-
-### Updating Content
-*   **Navigation**: Edit the `<ul>` with `id="navMenu"` in `index.html`.
-*   **Projects/Education**: Modify the respective HTML sections (`#projects`, `#education`). The JavaScript automatically handles the timeline logic for any number of education items.
-
-## 📬 Contact
-
-Feel free to reach out to me:
-
-*   **Email**: [vihaan.varshney@outlook.com](mailto:vihaan.varshney@outlook.com)
 *   **LinkedIn**: [Vihaan Varshney](https://www.linkedin.com/in/vihaan-varshney/)
+*   **Email**: [vihaan.varshney@outlook.com](mailto:vihaan.varshney@outlook.com)
 *   **GitHub**: [CodeClosed](https://github.com/CodeClosed)
 
 ---
-
-© 2026 Vihaan Varshney. All Rights Reserved.
+© 2026 Vihaan Varshney. Built with ❤️ and Code.
