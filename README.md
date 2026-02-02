@@ -26,12 +26,20 @@ Welcome to my personal portfolio website repository! This project showcases my a
 ## 📂 Project Structure
 
 ```
-├── index.html        # Main HTML structure
-├── style.css         # Global styles and theme definitions
-├── script.js         # Logic for theme toggle, animations, and timeline
-├── dark-hero-bg.png  # Hero background for dark mode
-├── light-hero-bg.png # Hero background for light mode
-└── README.md         # Project documentation
+├── index.html         # Main HTML structure
+├── style.css          # Global styles and theme definitions
+├── script.js          # Logic for theme toggle, animations, and timeline
+├── dark-hero-bg.png   # Hero background for dark mode
+├── light-hero-bg.png  # Hero background for light mode
+├── favicon/           # Favicon and PWA assets
+│   ├── favicon.ico
+│   ├── favicon-16x16.png
+│   ├── favicon-32x32.png
+│   ├── apple-touch-icon.png
+│   ├── android-chrome-192x192.png
+│   ├── android-chrome-512x512.png
+│   └── site.webmanifest
+└── README.md          # Project documentation
 ```
 
 ## ⚙️ Setup & Installation

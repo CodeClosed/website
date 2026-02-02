@@ -12,12 +12,17 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- change -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
   <nav class="navbar" aria-label="Main navigation">
     <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="navMenu"
       aria-label="Toggle navigation">
@@ -42,17 +47,22 @@
   </nav>
 
   <header id="home" class="hero reveal">
+    <canvas id="particles-canvas"></canvas>
     <div class="hero-content">
-
       <h1 class="text-gradient">Vihaan Varshney</h1>
-      <h2 style="font-family: 'JetBrains Mono'; font-size: 1.2rem; margin-top: 10px; color: var(--text-light);">
-        B.Tech CSE (AI & ML) | VIT Vellore
+      <h2 class="typing-container">
+        <span id="typing-text"></span><span class="cursor">|</span>
       </h2>
-      <p style="max-width: 600px; margin: 30px auto; font-size: 1.1rem; line-height: 1.8;">
-        Aspiring Software Developer | Python | Web Development
+      <p class="hero-tagline">
+        Building elegant solutions with clean code and creative thinking.
       </p>
       <div class="hero-actions">
-        <a href="/resume.pdf" class="btn primary" download>Download Resume</a>
+        <a href="/resume.pdf" class="btn primary" download>
+          <span>Download Resume</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+          </svg>
+        </a>
         <a href="#contact" class="btn secondary">Contact Me</a>
       </div>
     </div>
@@ -60,53 +70,185 @@
 
   <section id="about" class="section reveal">
     <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
-    <div class="tech-card" style="width: 100%;">
-      <p style="margin-bottom: 1rem; color: var(--text-light); line-height: 1.8;">
-        I am a <strong>B.Tech Computer Science and Engineering</strong> student at VIT Vellore with a strong
-        foundation in programming and problem-solving. My journey in tech is driven by a curiosity to understand how
-        complex systems work and a passion for building user-centric solutions.
-      </p>
-      <p style="margin-bottom: 1rem; color: var(--text-light); line-height: 1.8;">
-        I have hands-on experience with <strong>Python, C++, Java, and Modern Web Technologies</strong>. Recently, I
-        completed HarvardX’s <strong>CS50P</strong>, which sharpened my analytical thinking and core CS fundamentals.
-      </p>
-      <p style="color: var(--text-light); line-height: 1.8;">
-        Currently, I am focusing on bridging the gap between robust backend logic and intuitive frontend design, while
-        actively exploring the realms of <strong>Artificial Intelligence and Machine Learning</strong>. I thrive in
-        collaborative environments and am eager to contribute to real-world software solutions.
-      </p>
+    <div class="about-card">
+      <!-- Quick Stats -->
+      <div class="about-stats">
+        <div class="about-stat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          <span>He/Him</span>
+        </div>
+        <div class="about-stat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 2 2 7 12 12 22 7 12 2" />
+            <polyline points="2 17 12 22 22 17" />
+            <polyline points="2 12 12 17 22 12" />
+          </svg>
+          <span>Problem Solving</span>
+        </div>
+        <div class="about-stat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+          <span>English & Hindi</span>
+        </div>
+        <div class="about-stat highlight-stat">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+          <span>Available for Internships</span>
+        </div>
+      </div>
+
+      <!-- Original Text -->
+      <div class="about-content">
+        <p>
+          I am a <strong>B.Tech Computer Science and Engineering</strong> student at VIT Vellore with a strong
+          foundation in programming and problem-solving. My journey in tech is driven by a curiosity to understand how
+          complex systems work and a passion for building user-centric solutions.
+        </p>
+        <p>
+          I have hands-on experience with <strong>Python, C++, Java, and Modern Web Technologies</strong>. Recently, I
+          completed HarvardX's <strong>CS50P</strong>, which sharpened my analytical thinking and core CS fundamentals.
+        </p>
+        <p>
+          Currently, I am focusing on bridging the gap between robust backend logic and intuitive frontend design, while
+          actively exploring the realms of <strong>Artificial Intelligence and Machine Learning</strong>. I thrive in
+          collaborative environments and am eager to contribute to real-world software solutions.
+        </p>
+      </div>
     </div>
   </section>
 
   <section id="skills" class="section reveal">
     <h2 class="section-title">My <span class="text-gradient">Skills</span></h2>
-    <p style="font-family: 'JetBrains Mono'; margin-bottom: 20px; color: var(--accent);">const skills = [</p>
-    <div class="skills-grid" style="padding-left: 20px;">
-      <span class="skill-tag">"Python"</span>
-      <span class="skill-tag">"HTML5"</span>
-      <span class="skill-tag">"CSS3"</span>
-      <span class="skill-tag">"JavaScript"</span>
-      <span class="skill-tag">"C"</span>
-      <span class="skill-tag">"C++"</span>
-      <span class="skill-tag">"Java"</span>
-      <span class="skill-tag">"WordPress"</span>
+
+    <div class="skills-categories">
+      <!-- Languages Category -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="16 18 22 12 16 6" />
+            <polyline points="8 6 2 12 8 18" />
+          </svg>
+          Languages
+        </h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Java</span>
+          <span class="skill-tag">C / C++</span>
+          <span class="skill-tag">JavaScript</span>
+        </div>
+      </div>
+
+      <!-- Web Development Category -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+          Web Development
+        </h3>
+        <div class="skill-tags">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">WordPress</span>
+        </div>
+      </div>
+
+      <!-- Tools Category -->
+      <div class="skill-category">
+        <h3 class="category-title">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+          </svg>
+          Tools & Platforms
+        </h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">VS Code</span>
+          <span class="skill-tag">Gemini CLI/Antigravity</span>
+        </div>
+      </div>
     </div>
-    <p style="font-family: 'JetBrains Mono'; margin-top: 20px; color: var(--accent);">];</p>
   </section>
 
   <section id="projects" class="section reveal">
     <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
-    <div class="tech-grid">
+    <div class="projects-grid">
       <!-- Project 01 -->
-      <a href="https://github.com/CodeClosed/portfolio" target="_blank" class="tech-card">
-        <div class="card-index">&lt;01&gt;</div>
-        <h3>Portfolio Website</h3>
-        <p>Personal portfolio built using HTML, CSS, and JavaScript with dark mode and glassmorphism design.</p>
-        <div class="tags"
-          style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent);">
-          ['HTML', 'CSS', 'JS']
+      <div class="project-card">
+        <div class="project-preview">
+          <div class="project-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="9" y1="21" x2="9" y2="9" />
+            </svg>
+          </div>
+          <span class="project-badge">Featured</span>
         </div>
-      </a>
+        <div class="project-content">
+          <h3 class="project-title">Portfolio Website</h3>
+          <p class="project-description">
+            Personal portfolio built with HTML, CSS, and JavaScript featuring dark mode, glassmorphism design, and
+            smooth animations.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">HTML</span>
+            <span class="tech-tag">CSS</span>
+            <span class="tech-tag">JavaScript</span>
+          </div>
+          <div class="project-actions">
+            <a href="https://github.com/CodeClosed/portfolio" target="_blank" class="project-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              View Code
+            </a>
+            <a href="#" class="project-btn primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                <polyline points="15 3 21 3 21 9" />
+                <line x1="10" y1="14" x2="21" y2="3" />
+              </svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 02 - Placeholder -->
+      <div class="project-card">
+        <div class="project-preview">
+          <div class="project-icon">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M12 2L2 7l10 5 10-5-10-5z" />
+              <path d="M2 17l10 5 10-5" />
+              <path d="M2 12l10 5 10-5" />
+            </svg>
+          </div>
+        </div>
+        <div class="project-content">
+          <h3 class="project-title">Coming Soon</h3>
+          <p class="project-description">
+            New exciting projects are in development. Stay tuned for updates on AI/ML and web development projects.
+          </p>
+          <div class="project-tech">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">AI/ML</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -124,83 +266,94 @@
 
         <!-- Semester 3 -->
         <div class="timeline-item">
-          <div class="tech-card timeline-card">
-            <div class="card-index">&lt;2025&gt;</div>
-            <h3>Semester 3</h3>
-            <p class="timeline-subtitle">VIT Vellore</p>
-            <div class="timeline-gpa">GPA: 9.27</div>
-            <p style="color: var(--text-light); line-height: 1.7; margin-top: 10px;">
+          <div class="edu-card">
+            <div class="edu-header">
+              <span class="edu-year">2025</span>
+              <span class="edu-gpa">GPA: 9.27</span>
+            </div>
+            <h3 class="edu-title">Semester 3</h3>
+            <p class="edu-institution">VIT Vellore</p>
+            <p class="edu-description">
               During <strong>Semester 3</strong>, I completed an advanced and diverse academic curriculum. This semester
               significantly strengthened my object-oriented programming expertise in Java, algorithmic thinking and data
               structure implementation, digital logic and system-level design skills, as well as my mathematical
-              foundations. I also refined my communication, teamwork, and professional skills.
-              <strong>I achieved strong analytical ability, technical depth, and sustained academic excellence.</strong>
+              foundations. <strong>I achieved strong analytical ability, technical depth, and sustained academic
+                excellence.</strong>
             </p>
-            <div class="tags"
-              style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); font-weight: 600;">
-              ['Java', 'DSA', 'Digital Systems', 'Linear Algebra', 'Discrete Math']
+            <div class="edu-tags">
+              <span>Java</span>
+              <span>DSA</span>
+              <span>Digital Systems</span>
+              <span>Linear Algebra</span>
+              <span>Discrete Math</span>
             </div>
           </div>
         </div>
 
         <!-- Semester 2 -->
         <div class="timeline-item">
-          <div class="tech-card timeline-card">
-            <div class="card-index">&lt;2024&gt;</div>
-            <h3>Semester 2</h3>
-            <p class="timeline-subtitle">VIT Vellore</p>
-            <div class="timeline-gpa">GPA: 9.45</div>
-            <p style="color: var(--text-light); line-height: 1.7; margin-top: 10px;">
+          <div class="edu-card">
+            <div class="edu-header">
+              <span class="edu-year">2024</span>
+              <span class="edu-gpa">GPA: 9.45</span>
+            </div>
+            <h3 class="edu-title">Semester 2</h3>
+            <p class="edu-institution">VIT Vellore</p>
+            <p class="edu-description">
               During <strong>Semester 2</strong>, I successfully completed a rigorous curriculum focusing on core
               computing concepts. This semester advanced my proficiency in structured and object-oriented programming
               concepts through both theoretical study and intensive lab practice, strengthened my mathematical
-              foundation
-              in differential equations, and enhanced my quantitative reasoning abilities.
-              <strong>I achieved strong technical competence, analytical depth, and consistent scholastic
-                excellence.</strong>
+              foundation in differential equations, and enhanced my quantitative reasoning abilities. <strong>I achieved
+                strong technical competence, analytical depth, and consistent scholastic excellence.</strong>
             </p>
-            <div class="tags"
-              style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); font-weight: 600;">
-              ['OOP', 'Diff Equations', 'Quantitative Skills']
+            <div class="edu-tags">
+              <span>OOP</span>
+              <span>Diff Equations</span>
+              <span>Quantitative Skills</span>
             </div>
           </div>
         </div>
 
         <!-- Semester 1 -->
         <div class="timeline-item">
-          <div class="tech-card timeline-card">
-            <div class="card-index">&lt;2024&gt;</div>
-            <h3>Semester 1</h3>
-            <p class="timeline-subtitle">VIT Vellore</p>
-            <div class="timeline-gpa">GPA: 9.12</div>
-            <p style="color: var(--text-light); line-height: 1.7; margin-top: 10px;">
+          <div class="edu-card">
+            <div class="edu-header">
+              <span class="edu-year">2024</span>
+              <span class="edu-gpa">GPA: 9.12</span>
+            </div>
+            <h3 class="edu-title">Semester 1</h3>
+            <p class="edu-institution">VIT Vellore</p>
+            <p class="edu-description">
               During <strong>Semester 1</strong>, I completed a rigorous foundational curriculum. This semester
               strengthened my core programming capabilities through hands-on Python problem solving, enhanced my
               analytical and mathematical reasoning via calculus applications, and developed essential professional
-              competencies.
-              <strong>I achieved strong conceptual understanding, consistent performance, and disciplined
+              competencies. <strong>I achieved strong conceptual understanding, consistent performance, and disciplined
                 learning.</strong>
             </p>
-            <div class="tags"
-              style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); font-weight: 600;">
-              ['Python', 'Calculus', 'Qualitative Skills']
+            <div class="edu-tags">
+              <span>Python</span>
+              <span>Calculus</span>
+              <span>Problem Solving</span>
             </div>
           </div>
         </div>
 
         <!-- Class 12 -->
         <div class="timeline-item">
-          <div class="tech-card timeline-card">
-            <div class="card-index">&lt;2024&gt;</div>
-            <h3>Class 12 (CBSE)</h3>
-            <p class="timeline-subtitle">Gurukul The School</p>
-            <div class="timeline-gpa">Score: 93%</div>
-            <p style="color: var(--text-light); line-height: 1.7; margin-top: 10px;">
-              Completed higher secondary education in the Science stream, specializing in Computer attractions.
+          <div class="edu-card">
+            <div class="edu-header">
+              <span class="edu-year">2024</span>
+              <span class="edu-gpa">Score: 93%</span>
+            </div>
+            <h3 class="edu-title">Class 12 (CBSE)</h3>
+            <p class="edu-institution">Gurukul The School</p>
+            <p class="edu-description">
+              Completed higher secondary education in the Science stream, specializing in Computer Science. Built a
+              strong foundation in programming, mathematics, and analytical thinking.
             </p>
-            <div class="tags"
-              style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); font-weight: 600;">
-              ['Computer Science']
+            <div class="edu-tags">
+              <span>Computer Science</span>
+              <span>Science Stream</span>
             </div>
           </div>
         </div>
@@ -219,26 +372,83 @@
 
   <section id="certifications" class="section reveal">
     <h2 class="section-title">My <span class="text-gradient">Certifications</span></h2>
-    <div class="tech-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+    <div class="cert-grid">
       <a href="https://cs50.harvard.edu/certificates/9f567f23-bfd6-4d35-85c7-fa453d0cf8eb" target="_blank"
-        class="tech-card">
-        <div class="card-index">&lt;CS50P&gt;</div>
-        <h3>Intro to Programming with Python</h3>
-        <p style="margin-bottom: 15px;">Harvard University</p>
-        <div class="tags"
-          style="margin-top: auto; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent);">
-          ['Python', 'HarvardX', '2024']
+        class="cert-card">
+        <div class="cert-header">
+          <span class="cert-badge">CS50P</span>
+          <span class="cert-year">2024</span>
+        </div>
+        <h3 class="cert-title">Intro to Programming with Python</h3>
+        <p class="cert-issuer">Harvard University</p>
+        <div class="cert-tags">
+          <span>Python</span>
+          <span>HarvardX</span>
+          <span>Verified</span>
         </div>
       </a>
     </div>
   </section>
 
-  <footer id="contact" class="footer-modern reveal">
-    <h2 class="section-title">Contact <span class="text-gradient">ME</span></h2>
+  <section id="contact" class="section reveal">
+    <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
 
+    <div class="contact-container">
+      <div class="contact-info">
+        <p class="contact-intro">
+          I'm always open to discussing new opportunities, creative projects, or just having a chat about technology.
+          Feel free to reach out!
+        </p>
+
+        <div class="contact-cards">
+          <a href="mailto:vihaan.varshney@outlook.com" class="contact-card">
+            <div class="contact-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="contact-details">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">vihaan.varshney@outlook.com</span>
+            </div>
+          </a>
+
+          <a href="https://www.linkedin.com/in/vihaan-varshney/" target="_blank" class="contact-card">
+            <div class="contact-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.22-.44-2.12-1.51-2.12-1.12 0-1.74.83-2 1.62V19h-3v-9h3v1.39a3.86 3.86 0 013.3-1.63c2.37 0 3.21 1.67 3.21 4.5z" />
+              </svg>
+            </div>
+            <div class="contact-details">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">Connect with me</span>
+            </div>
+          </a>
+
+          <a href="https://github.com/CodeClosed" target="_blank" class="contact-card">
+            <div class="contact-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+            </div>
+            <div class="contact-details">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">View my projects</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-modern">
     <nav class="footer-nav">
       <a href="#home">Home</a>
-      <a href="#about">About</a> <a href="#skills">Skills</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
       <a href="#projects">Projects</a>
       <a href="#education">Education</a>
       <a href="#certifications">Certifications</a>
@@ -246,23 +456,11 @@
     <p class="footer-tagline">
       Crafted with passion and curiosity. Always learning, always building.
     </p>
-    <div class="footer-socials">
-      <a href="mailto:vihaan.varshney@outlook.com"><svg viewBox="0 0 24 24">
-          <path
-            d="M1.5 4.5A1.5 1.5 0 0 1 3 4.5h18a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H3A1.5 1.5 0 0 1 1.5 18V6ZM3 6v.943l9 5.625 9-5.625V6H3Zm0 2.708V18h18V8.708L12 14.333 3 8.708Z" />
-        </svg></a>
-      <a href="https://www.linkedin.com/in/vihaan-varshney/" target="_blank"><svg viewBox="0 0 24 24">
-          <path
-            d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.22-.44-2.12-1.51-2.12-1.12 0-1.74.83-2 1.62V19h-3v-9h3v1.39a3.86 3.86 0 013.3-1.63c2.37 0 3.21 1.67 3.21 4.5z" />
-        </svg></a>
-      <a href="https://github.com/CodeClosed" target="_blank"><svg viewBox="0 0 24 24">
-          <path
-            d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-        </svg></a>
-    </div>
+    <p class="footer-copyright">© 2024 Vihaan Varshney. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
 </body>
+
 
 </html>
