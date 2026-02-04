@@ -1,19 +1,3 @@
-  // Example easing function
-  function ease(t, b, c, d) {
-    t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
-    t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
-  }
-
-  requestAnimationFrame(animation);
-}
-
-// Usage: Scroll to 1000px over 2000ms (2 seconds)
-timedScroll(1000, 2000);
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const themeToggle = document.getElementById("themeToggle");
   const navToggle = document.getElementById("navToggle");
@@ -525,5 +509,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
 
