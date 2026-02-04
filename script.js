@@ -1,16 +1,3 @@
-function timedScroll(targetY, duration) {
-  const startY = window.scrollY;
-  const distance = targetY - startY;
-  let startTime = null;
-
-  function animation(currentTime) {
-    if (startTime === null) startTime = currentTime;
-    const timeElapsed = currentTime - startTime;
-    const run = ease(timeElapsed, startY, distance, duration);
-    window.scrollTo(0, run);
-    if (timeElapsed < duration) requestAnimationFrame(animation);
-  }
-
   // Example easing function
   function ease(t, b, c, d) {
     t /= d / 2;
@@ -538,4 +525,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
 
