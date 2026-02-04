@@ -1,4 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Add class to body to indicate JS has loaded (enables reveal animations)
+  document.body.classList.add('js-loaded');
   const themeToggle = document.getElementById("themeToggle");
   const navToggle = document.getElementById("navToggle");
   const navMenu = document.getElementById("navMenu");
