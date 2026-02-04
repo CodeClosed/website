@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Add class to body to indicate JS has loaded (enables reveal animations)
-  document.body.classList.add('js-loaded');
+  // Class addition moved to end for safety
   const themeToggle = document.getElementById("themeToggle");
   const navToggle = document.getElementById("navToggle");
   const navMenu = document.getElementById("navMenu");
@@ -286,7 +285,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Theme Logic ---
-  const savedTheme = localStorage.getItem("theme");
+  let savedTheme = null;
+  try {
+    savedTheme = localStorage.getItem("theme");
+  } catch (e) {
+    console.log("LocalStorage blocked:", e);
+  }
   const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
   const applyTheme = (isDark) => {
@@ -309,7 +313,11 @@ document.addEventListener("DOMContentLoaded", () => {
   themeToggle.addEventListener("click", () => {
     const isDark = !document.body.classList.contains("dark");
     applyTheme(isDark);
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    try {
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    } catch (e) {
+      // Ignore write errors
+    }
   });
 
   // --- Mobile Nav Logic ---
@@ -510,7 +518,10 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Mark JS as loaded only after safe execution of initialization code
+  document.body.classList.add('js-loaded');
 });
+
 
 
 
