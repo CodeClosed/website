@@ -518,10 +518,52 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // --- Simple fading effect while scrolling ---
+  // 1) Fade elements while they scroll into view. Add class `fade-on-scroll` to elements you want to fade.
+  const fadeTargets = document.querySelectorAll('.fade-on-scroll');
+  if (fadeTargets.length > 0) {
+    // Build an array of thresholds for smooth interpolation
+    const thresholds = Array.from({ length: 21 }, (_, i) => i / 20);
+    const fadeObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const el = entry.target;
+        // Ensure the element has transition for smoothness
+        el.style.transition = el.style.transition || 'opacity 0.35s ease, transform 0.35s ease';
+        // Use intersectionRatio (0..1) to drive opacity and vertical offset
+        const ratio = entry.intersectionRatio;
+        el.style.opacity = Math.min(1, Math.max(0, ratio));
+        // translate from 20px -> 0px as it becomes visible
+        el.style.transform = `translateY(${(1 - ratio) * 20}px)`;
+        // Optionally add class when fully visible
+        if (ratio >= 0.95) el.classList.add('visible');
+        else el.classList.remove('visible');
+      });
+    }, { threshold: thresholds });
+    fadeTargets.forEach(t => {
+      // Initialize state
+      t.style.opacity = 0;
+      t.style.transform = 'translateY(20px)';
+      fadeObserver.observe(t);
+    });
+  }
+
+  // 2) Optional: fade a loading overlay (#loading) as the user scrolls down.
+  //    This makes the loading element fade-out quickly if the user scrolls.
+  const loadingEl = document.getElementById('loading');
+  if (loadingEl) {
+    loadingEl.style.transition = loadingEl.style.transition || 'opacity 0.4s ease';
+    const maxScrollForFade = 200; // px scrolled until fully faded
+    const onScrollFadeLoading = () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      const opacity = Math.max(0, 1 - scrollY / maxScrollForFade);
+      loadingEl.style.opacity = opacity;
+      loadingEl.style.pointerEvents = opacity === 0 ? 'none' : '';
+    };
+    // Run on load in case user already scrolled
+    onScrollFadeLoading();
+    window.addEventListener('scroll', onScrollFadeLoading, { passive: true });
+  }
+
   // Mark JS as loaded only after safe execution of initialization code
   document.body.classList.add('js-loaded');
 });
-
-
-
-
