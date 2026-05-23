@@ -1,24 +1,75 @@
-# The Vihaan Varshney Times &bull; Portfolio Broadside
+# ⚡ Vihaan Varshney - Interactive Portfolio
 
-A premium, highly responsive **Neo-Brutalist Newspaper / Poster style** personal portfolio website, designed and built with vanilla web technologies. 
+A high-performance, responsive, and interactive personal portfolio website built with **Vanilla JavaScript, HTML5, and CSS3**. This project demonstrates advanced frontend techniques without relying on external frameworks.
 
-Live Deployment: [https://vihaanvarshney.com](https://vihaanvarshney.com)
+## 🚀 Live Demo
+[**Click here to view the live site**](https://vihaanvarshney.com/)
+
+## ✨ Key Features
+
+### 🎨 Visuals & UI
+*   **Glassmorphism Aesthetic**: Modern, translucent UI elements using `backdrop-filter: blur`, simulating frosted glass.
+*   **Interactive Particle Engine**: Custom-built HTML5 Canvas animation where particles repel from the cursor and form connections dynamically.
+*   **Dark/Light Mode**: System-aware theme switching with manual override and `localStorage` persistence.
+*   **Scroll & Reveal Animations**: Content glides in using `IntersectionObserver` for an immersive scrolling experience.
+
+### 📱 Responsive & Mobile-First
+*   **Touch-Friendly Navigation**: A completely custom hamburger menu and sidebar optimized for mobile devices.
+*   **Draggable Timeline**: The education section features a horizontal scrolling timeline that supports touch swiping and drag-to-scroll on desktop.
+*   **Adaptive Layouts**: Fluid grids and flexbox layouts ensure the site looks perfect on 4K monitors, laptops, tablets, and phones.
+
+## 🛠️ Technical Deep Dive
+
+### Frontend Architecture
+*   **Structure**: Semantic HTML5 for accessibility and SEO.
+*   **Styling**:
+    *   **CSS Custom Properties (Variables)**: Used extensively for consistent theming (colors, spacing, fonts).
+    *   **Flexbox & Grid**: For complex, responsive layouts.
+    *   **Keyframe Animations**: Pulse effects and transitions.
+*   **Scripting**:
+    *   **Classes**: Object-Oriented approach for the Particle system.
+    *   **Observers**: `IntersectionObserver` used for performance-friendly scroll animations (no scroll event listeners).
+    *   **Event Delegation**: Efficient handling of dynamic DOM elements.
+
+### Performance Optimizations
+*   **Canvas Optimization**: Particle animation uses efficient frame rendering and clears only necessary areas.
+*   **Asset Loading**: Minified images and deferred script loading.
+*   **Typing Effect**: Lightweight custom implementation without heavy libraries like Typed.js.
+
+## 📂 Project Structure
+
+```bash
+├── index.html         # Main entry point (Semantic Structure)
+├── style.css          # Design System, Themes, and Components
+├── script.js          # Logic (Particles, Theme, Observers, Typing)
+├── dark-hero-bg.png   # Optimized background asset
+├── light-hero-bg.png  # Optimized background asset
+└── favicon/           # PWA Manifest and Icons effect
+```
+
+## ⚙️ How to Run Locally
+
+Since this is a static site, you don't need `npm` or a build process!
+
+1.  **Clone the Repo**
+    ```bash
+    git clone https://github.com/CodeClosed/portfolio.git
+    cd portfolio
+    ```
+
+2.  **Launch**
+    *   Simply open `index.html` in Chrome, Firefox, or Edge.
+    *   *Optional (for best experience)*: Use VS Code "Live Server" extension or Python:
+        ```bash
+        python -m http.server 8000
+        ```
+        Then visit `http://localhost:8000`.
+
+## 📬 Connect
+
+*   **LinkedIn**: [Vihaan Varshney](https://www.linkedin.com/in/vihaan-varshney/)
+*   **Email**: [vihaan.varshney@outlook.com](mailto:vihaan.varshney@outlook.com)
+*   **GitHub**: [CodeClosed](https://github.com/CodeClosed)
 
 ---
-
-## ✦ Key Design Features
-- **Broadsheet Grid Columns**: Newspaper layout featuring headlines, timelines, classified grids, and stamp badges.
-- **High Contrast Contrast Mode**: Dynamic dark mode toggle that swaps standard aged cream paper (`#F4EBD7`) print for a scorched coffee-charcoal (`#1A1108`) background. Settings persist in `localStorage`.
-- **Ember Canvas Engine**: Performance-optimized HTML5 2D canvas drawing floating warm sparks that drift upwards and repel away from cursor movements.
-- **Collapsible Sidebar Cabinet**: Responsive navigation drawer overlay for mobile and tablet viewports (<768px).
-- **Favicon Stack**: Responsive icons linked inside the HTML head for cross-platform support.
-
----
-
-## ✦ File Structure
-- `index.html` - Primary semantic HTML5 structure.
-- `styles.css` - Custom CSS stylesheet, media queries, print texture, and color variables.
-- `script.js` - JS controller managing theme states, live dates, sidebars, and embers.
-- `CNAME` - GitHub Pages custom domain routing for `vihaanvarshney.com`.
-- `workspace_etching.png` - Custom woodcut artwork representing the developer's creative workspace.
-- `favicon/` - Multi-format icon suite.
+© 2026 Vihaan Varshney. Built with ❤️ and Code.
