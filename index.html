@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Vihaan Varshney Times — Portfolio & Broadside</title>
+  <meta name="description" content="Personal portfolio of Vihaan Varshney, B.Tech CS student at VIT Vellore. Highlighting software engineering, ML projects, and certifications in a retro newspaper style.">
+  
+  <!-- Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="favicon/apple-touch-icon.png">
+  <link rel="manifest" href="favicon/site.webmanifest">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <!-- Floating Canvas for Warm Amber Sparks Background -->
+  <canvas id="emberCanvas"></canvas>
+
+  <!-- Sidebar Navigation Cabinet -->
+  <div id="navBackdrop" class="sidebar-backdrop" aria-hidden="true"></div>
+  <aside id="sidebarNav" class="sidebar-cabinet" aria-label="Sidebar navigation" aria-hidden="true">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">THE TIMES REGISTRY</div>
+      <button id="sidebarClose" class="sidebar-close-btn" aria-label="Close navigation menu">
+        CLOSE &times;
+      </button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <nav class="sidebar-links">
+      <ul>
+        <li><a href="#headline" class="sidebar-link">HOME</a></li>
+        <li><a href="#about" class="sidebar-link">ABOUT ME</a></li>
+        <li><a href="#skills" class="sidebar-link">MY SKILLS</a></li>
+        <li><a href="#projects" class="sidebar-link">FEATURED PROJECTS</a></li>
+        <li><a href="#education" class="sidebar-link">EDUCATION JOURNEY</a></li>
+        <li><a href="#certifications" class="sidebar-link">MY CERTIFICATIONS</a></li>
+        <li><a href="#contact" class="sidebar-link">GET IN TOUCH</a></li>
+      </ul>
+    </nav>
+    <div class="sidebar-stamp-box">
+      <div class="stamp-seal stamp-orange">ACTIVE PORTFOLIO</div>
+    </div>
+  </aside>
+
+  <!-- Top Announcement Ticker Strip -->
+  <div class="top-strip">
+    <div class="ticker">
+      <span>VIHAAN VARSHNEY DECLARES READINESS FOR SUMMER INTERNSHIPS</span>
+      <span>B.TECH COMPUTER SCIENCE & ENGINEERING STUDENT AT VIT VELLORE</span>
+      <span>HARVARD CS50P & NPTEL HUMAN COMPUTER INTERACTION CERTIFIED</span>
+      <span>AWS CERTIFIED AI PRACTITIONER (IN PROGRESS)</span>
+      <span>EXPERTISE IN PYTHON, JAVA, C++, JAVASCRIPT & DATA SCIENCE</span>
+      <span>OPEN TO COLLABORATIVE OPPORTUNITIES</span>
+    </div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Masthead / Newspaper Header -->
+    <header class="masthead">
+      <div class="masthead-pre">
+        <button id="sidebarToggle" class="sidebar-toggle-btn" aria-label="Open navigation menu">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+        <span class="location">Ghaziabad, UP</span>
+        <button id="themeToggle" class="theme-btn" aria-label="Toggle contrast mode">
+          <span class="theme-icon">🌙</span> CONTRAST MODE
+        </button>
+      </div>
+      
+      <h1 class="logo-title">THE VIHAAN VARSHNEY TIMES</h1>
+      
+    </header>
+
+    <!-- Broad Navigation -->
+    <nav class="news-nav">
+      <ul>
+        <li><a href="#headline">HOME</a></li>
+        <li><a href="#about">ABOUT ME</a></li>
+        <li><a href="#skills">MY SKILLS</a></li>
+        <li><a href="#projects">FEATURED PROJECTS</a></li>
+        <li><a href="#education">EDUCATION JOURNEY</a></li>
+        <li><a href="#certifications">MY CERTIFICATIONS</a></li>
+        <li><a href="#contact">GET IN TOUCH</a></li>
+      </ul>
+    </nav>
+
+    <!-- Front Page Hero Layout -->
+    <main class="front-page">
+      
+      <!-- Headline & Editorial Section -->
+      <section id="headline" class="main-news-grid">
+        
+        <!-- Left Side: Lead Story -->
+        <div class="lead-story">
+          <div class="eyebrow">PORTFOLIO HEADLINE</div>
+          <h2 class="headline-text">
+            BUILDING SCALABLE SOLUTIONS AT THE INTERSECTION OF CLEAN CODE & INTELLIGENT SYSTEMS
+          </h2>
+          <p class="subheadline">
+            B.Tech CSE (AI & ML) student at VIT Vellore
+          </p>
+          
+          <div class="story-divider"></div>
+          
+          <div class="story-columns">
+            <p class="paragraph introduction">
+              <span class="drop-cap">I</span>am a <span class="text-accent">B. Tech – Computer Science and Engineering</span> student at <span class="text-accent">VIT Vellore</span> with a strong foundation in programming, problem-solving, and software development. Passionate about building user-centric and scalable solutions, I have hands-on experience in <span class="text-accent">Python, C++, Java, Javascript and Web Technologies</span>, along with a growing interest in <span class="text-accent">Artificial Intelligence, Machine Learning, and Cloud Computing</span>.
+            </p>
+            <p class="paragraph">
+              I have completed <span class="text-accent">HarvardX CS50P</span> and the <span class="text-accent">NPTEL-certified Human Computer Interaction course</span>, which strengthened my understanding of core computer science concepts, user-centered design, usability principles, and interface evaluation.
+            </p>
+          </div>
+          
+          <div class="cta-banner">
+            <a href="#contact" class="btn-newspaper">GET IN TOUCH &rarr;</a>
+            <a href="#projects" class="btn-link-newspaper">VIEW MY WORK</a>
+          </div>
+        </div>
+
+        <!-- Right Side: Poster Portrait Frame -->
+        <div class="poster-column">
+          <div class="poster-frame">
+            <div class="poster-band-top">
+              <span>WORK STATION MONITOR</span>
+              <span>ESTD 2024</span>
+            </div>
+            
+            <img src="workspace_etching.png" alt="Woodcut illustration of developer workspace" class="poster-img">
+            
+            <div class="poster-band-bottom">
+              <span class="pbb-sup">CREATIVE HEADQUARTERS</span>
+              <p class="pbb-main">&ldquo;Crafted with passion and curiosity. Always learning, always building.&rdquo;</p>
+            </div>
+            
+            <div class="poster-stamp">ACTIVE DEV</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Section Divider -->
+      <div class="section-rule-thick"></div>
+
+      <!-- About Editorial Panel -->
+      <section id="about" class="editorial-panel">
+        <h3 class="section-display">ABOUT ME</h3>
+        <p class="section-lead">A closer look at the values, certifications, and capabilities driving the engineer.</p>
+        
+        <div class="editorial-grid">
+          <!-- Column 1: Identity Cards -->
+          <div class="editorial-card">
+            <div class="card-header">IDENTITY DOSSIER</div>
+            <table class="dossier-table">
+              <tr>
+                <th>PRONOUNS:</th>
+                <td>He / Him</td>
+              </tr>
+              <tr>
+                <th>FOCUS:</th>
+                <td>Problem Solving & Scalability</td>
+              </tr>
+              <tr>
+                <th>LANGUAGES:</th>
+                <td>English & Hindi (Fluent)</td>
+              </tr>
+              <tr>
+                <th>STATUS:</th>
+                <td class="status-alert">OPEN TO INTERNSHIPS</td>
+              </tr>
+            </table>
+          </div>
+          
+          <!-- Column 2: Continuous Learning -->
+          <div class="editorial-card text-card">
+            <div class="card-header">Currently Pursuing</div>
+            <p>
+              Currently, I am pursuing the <span class="text-accent">AWS Certified AI Practitioner and AWS Certified Solutions Architect – Associate</span> certifications to deepen my expertise in <span class="text-accent">AI/ML fundamentals, cloud architecture, and scalable AWS solutions</span>.
+            </p>
+            <p>
+              I enjoy collaborating in team environments and continuously learning technologies that create meaningful real-world impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section Divider -->
+      <div class="section-rule"></div>
+
+      <!-- Skills Section (Classifieds Style) -->
+      <section id="skills" class="skills-section">
+        <h3 class="section-display">MY SKILLS</h3>
+        <p class="section-lead">Proven tools, technologies, and stacks categorized for prompt evaluation.</p>
+        
+        <div class="classifieds-grid">
+          
+          <!-- Category 1: Languages -->
+          <div class="classified-box">
+            <div class="box-tag">LANGUAGES</div>
+            <div class="box-title">Core Syntax</div>
+            <ul class="skill-list">
+              <li><strong>Python</strong> &bull; Harvard CS50P Level</li>
+              <li><strong>Java</strong> &bull; OOP Design Patterns</li>
+              <li><strong>C / C++</strong> &bull; Structural Foundations</li>
+              <li><strong>JavaScript</strong> &bull; ES6 & Interactive DOM</li>
+            </ul>
+          </div>
+          
+          <!-- Category 2: Web Development -->
+          <div class="classified-box">
+            <div class="box-tag">WEB DEV</div>
+            <div class="box-title">Interfaces & Layouts</div>
+            <ul class="skill-list">
+              <li><strong>HTML5</strong> &bull; Semantic Structure</li>
+              <li><strong>CSS3</strong> &bull; Vanilla, Layouts, Animation</li>
+              <li><strong>WordPress</strong> &bull; CMS Customization</li>
+            </ul>
+          </div>
+          
+          <!-- Category 3: Data Science & ML -->
+          <div class="classified-box">
+            <div class="box-tag">DATA SCIENCE</div>
+            <div class="box-title">Intelligence & Analysis</div>
+            <ul class="skill-list">
+              <li><strong>Pandas</strong> &bull; Data Manipulation</li>
+              <li><strong>NumPy</strong> &bull; Scientific Computation</li>
+              <li><strong>Scikit-learn</strong> &bull; Machine Learning Models</li>
+            </ul>
+          </div>
+          
+          <!-- Category 4: Tools & Platforms -->
+          <div class="classified-box">
+            <div class="box-tag">WORKFLOW</div>
+            <div class="box-title">Platforms & Environment</div>
+            <ul class="skill-list">
+              <li><strong>Git & GitHub</strong> &bull; Version Control</li>
+              <li><strong>VS Code</strong> &bull; Code Authoring</li>
+              <li><strong>Gemini CLI / Antigravity</strong> &bull; Agentic Dev Tools</li>
+              <li><strong>Jupyter / Google Colab</strong> &bull; Data Science</li>
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section Divider -->
+      <div class="section-rule-thick"></div>
+
+      <!-- Projects Section (Special Report Style) -->
+      <section id="projects" class="projects-section">
+          <h3 class="section-display">FEATURED PROJECTS</h3>
+          <p class="section-lead">Documenting significant code releases and algorithmic projects.</p>
+          
+          <div class="projects-container">
+            
+            <!-- Project 1: Portfolio website -->
+            <article class="project-article">
+              <div class="project-header">
+                <span class="project-number">REPORT NO. 01</span>
+                <h4>PORTFOLIO WEBSITE</h4>
+              </div>
+            
+            <div class="project-body">
+              <p class="project-summary">
+                A personal portfolio website built with HTML, CSS, and JavaScript. Featuring custom theme switches, glassmorphic layout foundations, and an interactive particle canvas — reimagined as a retro-modern newsprint broadside.
+              </p>
+              
+              <div class="tag-pile">
+                <span class="proj-tag">HTML</span>
+                <span class="proj-tag">CSS</span>
+                <span class="proj-tag">JavaScript</span>
+              </div>
+              
+              <a href="https://github.com/CodeClosed/website" target="_blank" rel="noopener noreferrer" class="btn-read-code">VIEW CODE &rarr;</a>
+            </div>
+          </article>
+          
+          <!-- Project 2: Inventory Management System -->
+          <article class="project-article">
+            <div class="project-header">
+              <span class="project-number">REPORT NO. 02</span>
+              <h4>INVENTORY SYSTEM</h4>
+            </div>
+            
+            <div class="project-body">
+              <p class="project-summary">
+                A highly functional web-based inventory management platform featuring tabular data export/import capabilities, automated transaction activity logs, and a personalized user profile control panel.
+              </p>
+              
+              <div class="tag-pile">
+                <span class="proj-tag">HTML</span>
+                <span class="proj-tag">CSS</span>
+                <span class="proj-tag">JavaScript</span>
+              </div>
+              
+              <a href="https://github.com/CodeClosed/Web-Programing-Project-IMS-24BAI0158" target="_blank" rel="noopener noreferrer" class="btn-read-code">VIEW CODE &rarr;</a>
+            </div>
+          </article>
+          
+          <!-- Project 3: Regression Analysis -->
+          <article class="project-article">
+            <div class="project-header">
+              <span class="project-number">REPORT NO. 03</span>
+              <h4>REGRESSION ANALYSIS</h4>
+            </div>
+            
+            <div class="project-body">
+              <p class="project-summary">
+                A data science pipeline performing regression analysis on an Air Quality dataset using Python, Pandas, and scikit-learn models (including Linear Regression, Support Vector Regression, and Random Forests).
+              </p>
+              
+              <div class="tag-pile">
+                <span class="proj-tag">Python</span>
+                <span class="proj-tag">scikit-learn</span>
+                <span class="proj-tag">Pandas</span>
+                <span class="proj-tag">NumPy</span>
+              </div>
+              
+              <a href="https://github.com/CodeClosed/regression-analysis" target="_blank" rel="noopener noreferrer" class="btn-read-code">VIEW CODE &rarr;</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Section Divider -->
+      <div class="section-rule"></div>
+
+      <!-- Education Timeline Section -->
+      <section id="education" class="education-section">
+        <h3 class="section-display">EDUCATION JOURNEY</h3>
+        <p class="section-lead">Timeline records detailing collegiate semesters and secondary qualifications.</p>
+        
+        <div class="timeline-log">
+          
+          <!-- Entry 1: Sem 3 -->
+          <div class="timeline-row">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-badge-cell">
+              <div class="timeline-badge">GPA 9.27</div>
+            </div>
+            <div class="timeline-desc">
+              <h5>Semester 3 &bull; VIT Vellore</h5>
+              <p>
+                Advanced curriculum strengthening object-oriented programming in Java, algorithmic thinking, data structure implementation, digital logic, and mathematical foundations. <span class="text-accent">Strong analytical ability, technical depth, and academic excellence.</span>
+              </p>
+              <div class="tag-pile">
+                <span class="edu-tag">Java</span>
+                <span class="edu-tag">DSA</span>
+                <span class="edu-tag">Digital Systems</span>
+                <span class="edu-tag">Linear Algebra</span>
+                <span class="edu-tag">Discrete Math</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Entry 2: Sem 2 -->
+          <div class="timeline-row">
+            <div class="timeline-date">2025</div>
+            <div class="timeline-badge-cell">
+              <div class="timeline-badge">GPA 9.45</div>
+            </div>
+            <div class="timeline-desc">
+              <h5>Semester 2 &bull; VIT Vellore</h5>
+              <p>
+                Rigorous curriculum advancing proficiency in structured and object-oriented programming, strengthening mathematical foundation in differential equations, and enhancing quantitative reasoning. <span class="text-accent">Strong technical competence and scholastic excellence.</span>
+              </p>
+              <div class="tag-pile">
+                <span class="edu-tag">OOP</span>
+                <span class="edu-tag">Diff Equations</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Entry 3: Sem 1 -->
+          <div class="timeline-row">
+            <div class="timeline-date">2024</div>
+            <div class="timeline-badge-cell">
+              <div class="timeline-badge">GPA 9.12</div>
+            </div>
+            <div class="timeline-desc">
+              <h5>Semester 1 &bull; VIT Vellore</h5>
+              <p>
+                Foundational curriculum with hands-on Python problem solving, analytical and mathematical reasoning via calculus, and essential professional competencies. <span class="text-accent">Strong conceptual understanding and disciplined learning.</span>
+              </p>
+              <div class="tag-pile">
+                <span class="edu-tag">Python</span>
+                <span class="edu-tag">Calculus</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Entry 4: Class 12 -->
+          <div class="timeline-row">
+            <div class="timeline-date">2024</div>
+            <div class="timeline-badge-cell">
+              <div class="timeline-badge">94.33%</div>
+            </div>
+            <div class="timeline-desc">
+              <h5>Class 12 &bull; Gurukul The School</h5>
+              <p>
+                Higher secondary CBSE education in the Science stream, specializing in Computer Science. Built a strong foundation in programming logic, mathematics, and analytical reasoning.
+              </p>
+              <div class="tag-pile">
+                <span class="edu-tag">AI</span>
+                <span class="edu-tag">Maths</span>
+                <span class="edu-tag">Physics</span>
+                <span class="edu-tag">Chemistry</span>
+                
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Section Divider -->
+      <div class="section-rule-thick"></div>
+
+      <!-- Certifications Archive -->
+      <section id="certifications" class="certifications-section">
+        <h3 class="section-display">MY CERTIFICATIONS</h3>
+        <p class="section-lead">Verified qualifications and credentials from international boards and institutions.</p>
+        
+        <div class="certifications-grid">
+          
+          <!-- Cert 1: CS50P -->
+          <a href="https://cs50.harvard.edu/certificates/9f567f23-bfd6-4d35-85c7-fa453d0cf8eb" target="_blank" rel="noopener noreferrer" class="cert-card">
+            <div class="cert-badge-seal">CS50P</div>
+            <div class="cert-year">2024</div>
+            <h4 class="cert-title">Intro to Programming with Python</h4>
+            <div class="cert-issuer">Harvard University (HarvardX)</div>
+            <div class="cert-divider"></div>
+            <div class="tag-pile">
+              <span class="cert-tag">Python</span>
+              <span class="cert-tag">HarvardX</span>
+              <span class="cert-tag">Verified</span>
+            </div>
+          </a>
+          
+          <!-- Cert 2: NPTEL -->
+          <a href="https://storage.googleapis.com/2026-mar-halltickets/certificate-generation-apr26/final/regular/noc26-cs70/NOC26CS70S278550137305022221.pdf" target="_blank" rel="noopener noreferrer" class="cert-card">
+            <div class="cert-badge-seal">NPTEL</div>
+            <div class="cert-year">2026</div>
+            <h4 class="cert-title">Human Computer Interaction</h4>
+            <div class="cert-issuer">National Programme on Technology Enhanced Learning</div>
+            <div class="cert-divider"></div>
+            <div class="tag-pile">
+              <span class="cert-tag">HCI</span>
+              <span class="cert-tag">UI/UX</span>
+              <span class="cert-tag">Verified</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- Section Divider -->
+      <div class="section-rule-thick"></div>
+
+      <!-- Contact Section (Dispatch Office Social Cards) -->
+      <section id="contact" class="dispatch-office">
+        <h3 class="section-display">GET IN TOUCH</h3>
+        <p class="section-lead">Establish contact directly via electronic mail or professional global networks.</p>
+        
+        <div class="dispatch-cards-container">
+          
+          <!-- Card 1: Email -->
+          <a href="mailto:vihaan.varshney@outlook.com" class="dispatch-card">
+            <div class="dispatch-icon-box">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="retro-icon">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <div class="dispatch-card-title">EMAIL</div>
+            <div class="dispatch-card-value">vihaan.varshney@outlook.com</div>
+            <div class="dispatch-card-label">Send Email &rarr;</div>
+            <div class="card-stamp stamp-green">DISPATCH</div>
+          </a>
+          
+          <!-- Card 2: LinkedIn -->
+          <a href="https://www.linkedin.com/in/vihaan-varshney/" target="_blank" rel="noopener noreferrer" class="dispatch-card">
+            <div class="dispatch-icon-box">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="retro-icon">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            </div>
+            <div class="dispatch-card-title">LINKEDIN</div>
+            <div class="dispatch-card-value">Connect with me</div>
+            <div class="dispatch-card-label">Connect &rarr;</div>
+            <div class="card-stamp stamp-orange">VERIFIED</div>
+          </a>
+          
+          <!-- Card 3: GitHub -->
+          <a href="https://github.com/CodeClosed" target="_blank" rel="noopener noreferrer" class="dispatch-card">
+            <div class="dispatch-icon-box">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="retro-icon">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+            </div>
+            <div class="dispatch-card-title">GITHUB</div>
+            <div class="dispatch-card-value">View my projects</div>
+            <div class="dispatch-card-label">View Repos &rarr;</div>
+            <div class="card-stamp stamp-crimson">CODE REPOS</div>
+          </a>
+          
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Broad Foot -->
+    <footer class="broad-foot">
+      <div class="footer-divider"></div>
+      <div class="footer-text">
+        <p>&copy; 2026 Vihaan Varshney. All rights reserved. Registered under scholastic honor code.</p>
+        <div class="footer-socials">
+          <a href="mailto:vihaan.varshney@outlook.com">EMAIL</a>
+          <a href="https://www.linkedin.com/in/vihaan-varshney/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+          <a href="https://github.com/CodeClosed" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        </div>
+        <p class="crafted-by">Always learning, always building. Engineered with Antigravity.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Back to Top Button -->
+  <button id="backToTop" class="btn-back-to-top" aria-label="Back to Top" title="Back to Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
