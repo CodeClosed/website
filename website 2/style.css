@@ -406,8 +406,13 @@ body.menu-open {
    5. HERO SECTION
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding: 80px 0 60px;
+  min-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 0;
   border-bottom: 1px solid var(--border-light);
+  box-sizing: border-box;
 }
 
 .hero-eyebrow {

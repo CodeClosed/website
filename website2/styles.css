@@ -399,15 +399,20 @@ body.menu-open {
   font-size: 0.95rem;
   color: var(--text-secondary);
   margin-top: 6px;
-  max-width: 680px;
+  max-width: 100%;
 }
 
 /* --------------------------------------------------------------------------
    5. HERO SECTION
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding: 80px 0 60px;
+  min-height: calc(100vh - 65px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px 0;
   border-bottom: 1px solid var(--border-light);
+  box-sizing: border-box;
 }
 
 .hero-eyebrow {
@@ -440,9 +445,9 @@ body.menu-open {
 
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+  font-size: clamp(2.0rem, 3.8vw, 2.9rem);
   font-weight: 400;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.025em;
   color: var(--text-main);
   margin-bottom: 20px;
