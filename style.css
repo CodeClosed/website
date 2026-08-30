@@ -738,6 +738,27 @@ body.menu-open {
   color: var(--text-secondary);
   font-weight: 500;
   margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.exp-company a {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+.exp-company a:hover {
+  color: var(--accent-primary-hover);
+}
+
+.exp-sep {
+  color: var(--border-medium);
+  font-size: 0.85rem;
+  user-select: none;
 }
 
 .exp-location {
