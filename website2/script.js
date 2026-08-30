@@ -33,16 +33,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   if (mobileNavToggle && mobileMenu) {
-    mobileNavToggle.addEventListener('click', () => {
+    mobileNavToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       const isOpen = mobileMenu.classList.toggle('open');
+      mobileNavToggle.classList.toggle('active', isOpen);
+      document.body.classList.toggle('menu-open', isOpen);
       mobileMenu.setAttribute('aria-hidden', !isOpen);
     });
 
     mobileLinks.forEach((link) => {
       link.addEventListener('click', () => {
         mobileMenu.classList.remove('open');
+        mobileNavToggle.classList.remove('active');
+        document.body.classList.remove('menu-open');
         mobileMenu.setAttribute('aria-hidden', 'true');
       });
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (mobileMenu.classList.contains('open') && !mobileMenu.contains(e.target) && !mobileNavToggle.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+        mobileNavToggle.classList.remove('active');
+        document.body.classList.remove('menu-open');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+      }
     });
   }
 
