@@ -796,22 +796,32 @@ body.dark-mode .skill-list li {
 
 .project-actions {
   display: flex;
-  gap: 15px;
+  gap: 12px;
   align-items: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(43, 37, 35, 0.2);
+}
+
+body.dark-mode .project-actions {
+  border-top-color: rgba(235, 230, 222, 0.2);
 }
 
 .btn-read-code {
   font-family: var(--font-condensed);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-decoration: none;
   color: var(--saffron-deep);
-  align-self: flex-start;
-  padding: 5px 0;
+  padding: 4px 0;
   border-bottom: 1.5px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
   transition: color 0.2s, border-bottom-color 0.2s;
 }
 
@@ -822,20 +832,27 @@ body.dark-mode .skill-list li {
 
 .btn-read-demo {
   font-family: var(--font-condensed);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  text-decoration: none;
   color: var(--ink);
-  align-self: flex-start;
-  padding: 5px 0;
-  border-bottom: 1.5px solid var(--saffron-deep);
-  transition: color 0.2s, border-bottom-color 0.2s;
+  background: var(--paper-2);
+  padding: 4px 10px;
+  border: 1px solid var(--ink-border);
+  box-shadow: 2px 2px 0 var(--ink-border);
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  transition: all 0.2s;
 }
 
 .btn-read-demo:hover {
-  color: var(--saffron-deep);
-  border-bottom-color: var(--ink);
+  background: var(--saffron-deep);
+  color: #ffffff;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink-border);
 }
 
 /* -------------------------------------------------------------
