@@ -700,6 +700,14 @@ body.menu-open {
   pointer-events: none;
 }
 
+.exp-accordion-header a,
+.exp-company a {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  position: relative;
+  z-index: 5;
+}
+
 .exp-accordion-header:hover {
   background-color: var(--bg-subtle);
 }

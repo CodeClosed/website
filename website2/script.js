@@ -172,4 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Prevent accordion toggle when clicking interactive links inside summary
+  const summaryLinks = document.querySelectorAll('.exp-accordion-header a');
+  summaryLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+  });
+
 });
