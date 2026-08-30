@@ -618,11 +618,19 @@ body {
   cursor: pointer;
   padding: 24px 28px;
   user-select: none;
+  display: block;
+  width: 100%;
   transition: background-color var(--transition-fast);
 }
 
-.exp-accordion-header::-webkit-details-marker {
+.exp-accordion-header::-webkit-details-marker,
+.exp-accordion-header::marker {
   display: none;
+  content: "";
+}
+
+.exp-accordion-header * {
+  pointer-events: none;
 }
 
 .exp-accordion-header:hover {

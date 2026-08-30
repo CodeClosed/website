@@ -144,4 +144,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // --------------------------------------------------------------------------
+  // 6. ACCORDION DETAILS TOGGLER (Dynamic State & Label)
+  // --------------------------------------------------------------------------
+  const accordions = document.querySelectorAll('.experience-accordion');
+  accordions.forEach((acc) => {
+    const toggleText = acc.querySelector('.toggle-text');
+    acc.addEventListener('toggle', () => {
+      if (toggleText) {
+        toggleText.textContent = acc.open ? 'Collapse' : 'Details';
+      }
+    });
+  });
+
 });
