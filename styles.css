@@ -1207,6 +1207,8 @@ details[open] .toggle-icon {
 .project-editorial-item:hover,
 .project-editorial-item:focus-within {
   border-color: var(--border-default);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 .project-editorial-item:active {
@@ -1454,6 +1456,8 @@ details[open] .toggle-icon {
 .cert-item-card:focus-within,
 .cert-item-card:focus-visible {
   border-color: var(--border-default);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 .cert-item-card:active {
@@ -1558,6 +1562,8 @@ details[open] .toggle-icon {
 .contact-tile-card:focus-within,
 .contact-tile-card:focus-visible {
   border-color: var(--border-default);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
 .contact-tile-card:active {
@@ -1736,6 +1742,58 @@ details[open] .toggle-icon {
 .back-to-top-btn:focus-visible {
   color: var(--text-primary);
   border-color: var(--border-strong);
+}
+
+/* Availability Badge & Footer Shortcut Hint */
+.badge-availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: #15803d;
+  background: rgba(22, 163, 74, 0.08);
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
+
+[data-theme="dark"] .badge-availability {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.1);
+  border-color: rgba(74, 222, 128, 0.28);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.85); }
+}
+
+.footer-shortcuts {
+  margin-top: 6px;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.footer-shortcuts kbd {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: var(--bg-subtle);
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
 }
 
 /* --------------------------------------------------------------------------
@@ -1989,8 +2047,15 @@ details[open] .toggle-icon {
   .link-action:hover .arrow,
   .link-action:hover .external-icon,
   .cert-item-card:hover .cert-verify-link .arrow,
-  .contact-tile-card:hover .tile-action-label .arrow {
+  .contact-tile-card:hover .tile-action-label .arrow,
+  .project-editorial-item:hover,
+  .cert-item-card:hover,
+  .contact-tile-card:hover {
     transform: none;
+  }
+
+  .status-dot {
+    animation: none;
   }
 }
 
