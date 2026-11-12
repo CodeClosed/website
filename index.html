@@ -169,6 +169,10 @@
           <svg class="lucide-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
           <span>Copy Email</span>
         </button>
+        <button type="button" id="printPdfBtn" class="btn-secondary print-pdf-btn" aria-label="Print or save portfolio as PDF">
+          <svg class="lucide-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6"/><rect x="6" y="14" width="12" height="8" rx="1"/></svg>
+          <span>Save PDF</span>
+        </button>
         <a href="https://github.com/CodeClosed" target="_blank" rel="noopener noreferrer" class="btn-link">
           <span>GitHub</span>
           <svg class="lucide-icon external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -186,7 +190,7 @@
           <div class="metric-label">CGPA</div>
         </div>
         <div class="metric-item">
-          <div class="metric-value">11+</div>
+          <div class="metric-value">9+</div>
           <div class="metric-label">Engineered Systems</div>
         </div>
         <div class="metric-item">
@@ -527,10 +531,10 @@
       </div>
 
       <div class="filter-pills-bar" data-filter-group="projects" role="group" aria-label="Filter projects by domain">
-        <button type="button" class="filter-pill-btn active" data-filter="all" aria-pressed="true">All Projects (11)</button>
+        <button type="button" class="filter-pill-btn active" data-filter="all" aria-pressed="true">All Projects (9)</button>
         <button type="button" class="filter-pill-btn" data-filter="compilers" aria-pressed="false">Compilers &amp; Systems (2)</button>
-        <button type="button" class="filter-pill-btn" data-filter="ai" aria-pressed="false">AI &amp; Deep Learning (3)</button>
-        <button type="button" class="filter-pill-btn" data-filter="fullstack" aria-pressed="false">Full-Stack &amp; Databases (4)</button>
+        <button type="button" class="filter-pill-btn" data-filter="ai" aria-pressed="false">AI &amp; Deep Learning (2)</button>
+        <button type="button" class="filter-pill-btn" data-filter="fullstack" aria-pressed="false">Full-Stack &amp; Databases (3)</button>
         <button type="button" class="filter-pill-btn" data-filter="frontend" aria-pressed="false">Front-End &amp; Canvas (2)</button>
       </div>
 
@@ -791,58 +795,6 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/CodeClosed/brave-newtab-dashboard" target="_blank" rel="noopener noreferrer" class="link-action">
-              <span>View Source Code</span>
-              <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 10: University Healthcare & Research Management System -->
-        <article class="project-editorial-item" data-category="fullstack">
-          <div class="project-meta-row">
-            <span class="project-index">10</span>
-            <span class="project-category">Relational Database Architecture</span>
-            <span class="badge-pill">3NF / BCNF</span>
-          </div>
-          <h3 class="project-title">University Healthcare &amp; Research Management System</h3>
-          <p class="project-description">
-            Comprehensive RDBMS architecture featuring Enhanced Entity-Relationship (EER) modeling, strict 3NF/BCNF relational schema conversion, and analytical SQL DDL/DML scripts for PostgreSQL and MySQL.
-          </p>
-          <div class="project-stack">
-            <span class="stack-tag">PostgreSQL</span>
-            <span class="stack-tag">MySQL</span>
-            <span class="stack-tag">EER Modeling</span>
-            <span class="stack-tag">3NF / BCNF</span>
-            <span class="stack-tag">SQL DDL &amp; DML</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/CodeClosed/University-Healthcare-and-Research-Management-System" target="_blank" rel="noopener noreferrer" class="link-action">
-              <span>View Source Code</span>
-              <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Project 11: GitHub Copilot Proficient Kit -->
-        <article class="project-editorial-item" data-category="ai">
-          <div class="project-meta-row">
-            <span class="project-index">11</span>
-            <span class="project-category">AI Developer Tooling</span>
-            <span class="badge-pill">MCP &bull; Copilot SDK</span>
-          </div>
-          <h3 class="project-title">GitHub Copilot Proficient Kit</h3>
-          <p class="project-description">
-            Project customization suite for GitHub Copilot featuring custom @architect agent definitions, reusable /refactor and /review prompt workflows, Agent Skills, Model Context Protocol (MCP) server configurations, and Copilot SDK/API integration.
-          </p>
-          <div class="project-stack">
-            <span class="stack-tag">GitHub Copilot SDK</span>
-            <span class="stack-tag">Model Context Protocol (MCP)</span>
-            <span class="stack-tag">JavaScript</span>
-            <span class="stack-tag">PowerShell</span>
-            <span class="stack-tag">VS Code</span>
-          </div>
-          <div class="project-links">
-            <a href="https://github.com/CodeClosed/copilot-proficient-kit" target="_blank" rel="noopener noreferrer" class="link-action">
               <span>View Source Code</span>
               <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
             </a>

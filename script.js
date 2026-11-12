@@ -271,6 +271,16 @@ document.addEventListener('DOMContentLoaded', () => {
     printAccordionStates = [];
   });
 
+  const printPdfBtn = document.getElementById('printPdfBtn');
+  if (printPdfBtn) {
+    printPdfBtn.addEventListener('click', () => {
+      showToast('Preparing print view...');
+      setTimeout(() => {
+        window.print();
+      }, 150);
+    });
+  }
+
   // --------------------------------------------------------------------------
   // 7. ACTIVE NAV SCROLL-SPY (IntersectionObserver)
   // --------------------------------------------------------------------------

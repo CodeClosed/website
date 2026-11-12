@@ -103,12 +103,37 @@ html {
 
 body {
   font-family: var(--font-sans);
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   background-color: var(--bg-body);
   color: var(--text-primary);
   line-height: 1.65;
   overflow-x: clip;
   transition: background-color var(--duration-base) var(--ease-out),
               color var(--duration-base) var(--ease-out);
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  font-optical-sizing: auto;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+.hero-title,
+.section-heading,
+.project-title,
+.exp-title,
+.timeline-title,
+.cert-item-title,
+.tile-title,
+.logo-name,
+.drop-cap {
+  font-optical-sizing: auto;
 }
 
 body.menu-open {
@@ -1140,11 +1165,18 @@ details[open] .toggle-icon {
   padding: 24px 26px;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
 }
 
-.project-editorial-item:hover {
+.project-editorial-item:hover,
+.project-editorial-item:focus-within {
   border-color: var(--border-default);
+}
+
+.project-editorial-item:active {
+  border-color: var(--border-strong);
 }
 
 .project-meta-row {
@@ -1373,11 +1405,19 @@ details[open] .toggle-icon {
   color: inherit;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
 }
 
-.cert-item-card:hover {
+.cert-item-card:hover,
+.cert-item-card:focus-visible {
   border-color: var(--border-default);
+}
+
+.cert-item-card:active {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
 .cert-meta-header {
@@ -1467,11 +1507,19 @@ details[open] .toggle-icon {
   color: inherit;
   display: flex;
   flex-direction: column;
-  transition: border-color var(--duration-fast) var(--ease-out);
+  transition: border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out),
+              transform var(--duration-fast) var(--ease-out);
 }
 
-.contact-tile-card:hover {
+.contact-tile-card:hover,
+.contact-tile-card:focus-visible {
   border-color: var(--border-default);
+}
+
+.contact-tile-card:active {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
 }
 
 .tile-icon-box {
