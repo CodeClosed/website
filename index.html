@@ -177,10 +177,6 @@
           <svg class="lucide-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
           <span>Download Resume</span>
         </a>
-        <button type="button" id="previewResumeBtn" class="btn-link">
-          <svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
-          <span>Preview Resume</span>
-        </button>
         <a href="https://github.com/CodeClosed" target="_blank" rel="noopener noreferrer" class="btn-link">
           <span>GitHub</span>
           <svg class="lucide-icon external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg>
@@ -517,7 +513,6 @@
         <button type="button" class="filter-pill-btn" data-filter="frontend" aria-pressed="false">Front-End &amp; Canvas (2)</button>
       </div>
       <div class="sr-only filter-status" aria-live="polite" id="projectsFilterStatus" data-filter-status="projects"></div>
-      <div id="activeTagBanner" class="active-tag-banner" hidden></div>
 
       <div class="projects-editorial-list">
 
@@ -1050,18 +1045,6 @@
     </section>
 
   </main>
-
-  <!-- Resume Preview Modal -->
-  <dialog id="resumePreviewModal" class="resume-modal" aria-labelledby="resumeModalTitle">
-    <div class="resume-modal-header">
-      <span id="resumeModalTitle" class="resume-modal-title">Resume &mdash; Vihaan Varshney</span>
-      <div class="resume-modal-actions">
-        <a href="Resume.pdf" download="Vihaan_Varshney_Resume.pdf" class="btn-primary btn-sm">Download PDF</a>
-        <button type="button" id="closeResumeModalBtn" class="btn-secondary btn-sm" aria-label="Close resume preview">Close</button>
-      </div>
-    </div>
-    <iframe id="resumePreviewFrame" class="resume-modal-frame" title="Vihaan Varshney Resume PDF"></iframe>
-  </dialog>
 
   <!-- Clean Toast Notification -->
   <div id="toastNotification" class="toast-popup" role="status" aria-live="polite">
