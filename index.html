@@ -186,7 +186,7 @@
           <div class="metric-label">CGPA</div>
         </div>
         <div class="metric-item">
-          <div class="metric-value">8+</div>
+          <div class="metric-value">11+</div>
           <div class="metric-label">Engineered Systems</div>
         </div>
         <div class="metric-item">
@@ -423,6 +423,7 @@
             <span class="skill-pill">RESTful API Design</span>
             <span class="skill-pill">HTML5 Canvas API</span>
             <span class="skill-pill">Responsive Layouts</span>
+            <span class="skill-pill">Chrome Extensions (Manifest V3)</span>
           </div>
         </div>
 
@@ -468,6 +469,7 @@
             <span class="skill-pill">ACID Transactions</span>
             <span class="skill-pill">SQLite</span>
             <span class="skill-pill">MySQL</span>
+            <span class="skill-pill">EER Modeling &amp; PL/pgSQL</span>
           </div>
         </div>
 
@@ -506,6 +508,8 @@
             <span class="skill-pill">Antigravity CLI / AGY</span>
             <span class="skill-pill">Amazon Web Services (AWS)</span>
             <span class="skill-pill">Cloudflare</span>
+            <span class="skill-pill">Model Context Protocol (MCP)</span>
+            <span class="skill-pill">GitHub Copilot SDK</span>
           </div>
         </div>
 
@@ -523,11 +527,11 @@
       </div>
 
       <div class="filter-pills-bar" data-filter-group="projects" role="group" aria-label="Filter projects by domain">
-        <button type="button" class="filter-pill-btn active" data-filter="all" aria-pressed="true">All Projects (8)</button>
+        <button type="button" class="filter-pill-btn active" data-filter="all" aria-pressed="true">All Projects (11)</button>
         <button type="button" class="filter-pill-btn" data-filter="compilers" aria-pressed="false">Compilers &amp; Systems (2)</button>
-        <button type="button" class="filter-pill-btn" data-filter="ai" aria-pressed="false">AI &amp; Deep Learning (2)</button>
-        <button type="button" class="filter-pill-btn" data-filter="fullstack" aria-pressed="false">Full-Stack &amp; Databases (3)</button>
-        <button type="button" class="filter-pill-btn" data-filter="frontend" aria-pressed="false">Front-End &amp; Canvas (1)</button>
+        <button type="button" class="filter-pill-btn" data-filter="ai" aria-pressed="false">AI &amp; Deep Learning (3)</button>
+        <button type="button" class="filter-pill-btn" data-filter="fullstack" aria-pressed="false">Full-Stack &amp; Databases (4)</button>
+        <button type="button" class="filter-pill-btn" data-filter="frontend" aria-pressed="false">Front-End &amp; Canvas (2)</button>
       </div>
 
       <div class="projects-editorial-list">
@@ -541,15 +545,18 @@
           </div>
           <h3 class="project-title">The Fresh Programming Language</h3>
           <p class="project-description">
-            A statically-typed, compiled programming language featuring a top-down operator precedence Pratt parser, an optimizing bytecode compiler, a custom stack-based Virtual Machine with mark-and-sweep garbage collection, first-class closures, native C transpilation, and a published PyPI CLI distribution.
+            A statically-typed, compiled programming language featuring a top-down operator precedence Pratt parser, pattern matching, an optimizing bytecode compiler, a custom stack-based Virtual Machine with mark-and-sweep garbage collection, first-class closures, native C transpilation, VS Code tooling, 90 passing pytest tests, and a published PyPI CLI distribution.
           </p>
           <div class="project-stack">
             <span class="stack-tag">Compiler Design</span>
             <span class="stack-tag">Pratt Parser</span>
+            <span class="stack-tag">Pattern Matching</span>
             <span class="stack-tag">Bytecode VM</span>
             <span class="stack-tag">Python</span>
             <span class="stack-tag">C</span>
             <span class="stack-tag">Garbage Collection</span>
+            <span class="stack-tag">pytest (90 tests)</span>
+            <span class="stack-tag">VS Code Tooling</span>
             <span class="stack-tag">PyPI Release</span>
           </div>
           <div class="project-links">
@@ -588,7 +595,7 @@
               <span>View Source Code</span>
               <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
             </a>
-            <a href="https://codeclosed.github.io/OS-Project-PCB-State/" target="_blank" rel="noopener noreferrer" class="link-action">
+            <a href="https://os-project-pcb-state.vercel.app" target="_blank" rel="noopener noreferrer" class="link-action">
               <span>Live Application</span>
               <span class="external-icon" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
             </a>
@@ -600,24 +607,30 @@
           <div class="project-meta-row">
             <span class="project-index">03</span>
             <span class="project-category">Computer Vision &amp; Health AI</span>
-            <span class="badge-pill">Gemini AI &bull; OCR</span>
+            <span class="badge-pill">Gemini 3.7 Flash &bull; OCR</span>
           </div>
           <h3 class="project-title">NutriMenu AI Platform</h3>
           <p class="project-description">
-            A clinical 3-tier food recommendation platform bridging physical restaurant menus (via EasyOCR text extraction) with individual biometric health matrices (Mifflin-St Jeor formula) and Gemini AI. Categorizes dishes into Good, Medium, and Bad tiers with zero-tolerance allergen guardrails and macronutrient targets.
+            A clinical 3-tier food recommendation platform bridging physical restaurant menus (via EasyOCR text extraction) with individual biometric health matrices (Mifflin-St Jeor formula) and Google Gemini 3.7 Flash. Built with a React 18 + Vite and Tailwind CSS frontend, containerized with Docker, and backed by 96 passing pytest tests with zero-tolerance allergen guardrails.
           </p>
           <div class="project-stack">
             <span class="stack-tag">FastAPI</span>
-            <span class="stack-tag">React</span>
+            <span class="stack-tag">React 18 + Vite</span>
+            <span class="stack-tag">Tailwind CSS</span>
             <span class="stack-tag">Python</span>
             <span class="stack-tag">EasyOCR</span>
-            <span class="stack-tag">Gemini AI</span>
-            <span class="stack-tag">Biometric Health Matrix</span>
+            <span class="stack-tag">Google Gemini 3.7 Flash</span>
+            <span class="stack-tag">Docker</span>
+            <span class="stack-tag">pytest (96 tests)</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/CodeClosed/AI-Project" target="_blank" rel="noopener noreferrer" class="link-action">
               <span>View Source Code</span>
               <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </a>
+            <a href="https://ai-project-vit-9baf.vercel.app" target="_blank" rel="noopener noreferrer" class="link-action">
+              <span>Live Application</span>
+              <span class="external-icon" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></svg></span>
             </a>
           </div>
         </article>
@@ -629,17 +642,18 @@
             <span class="project-category">Deep Learning &amp; Medical Vision</span>
             <span class="badge-pill">U-Net &bull; Grad-CAM</span>
           </div>
-          <h3 class="project-title">Chest X-Ray AI Analysis API</h3>
+          <h3 class="project-title">Chest X-Ray AI Analysis System</h3>
           <p class="project-description">
-            A dual-model deep learning medical imaging service featuring U-Net for lung segmentation and EfficientNetB0 for 3-class disease classification (COVID-19, Normal, Pneumonia). Integrates Grad-CAM visual heatmaps for explainable clinical reasoning and a high-performance FastAPI inference backend.
+            A dual-model deep learning medical imaging system pairing a Next.js and TypeScript interactive web frontend with a high-performance FastAPI inference backend. Features U-Net for lung segmentation, EfficientNetB0 for 3-class disease classification (COVID-19, Normal, Pneumonia), and Grad-CAM visual heatmaps for explainable clinical reasoning.
           </p>
           <div class="project-stack">
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">Next.js</span>
+            <span class="stack-tag">FastAPI</span>
             <span class="stack-tag">TensorFlow</span>
             <span class="stack-tag">U-Net Segmentation</span>
             <span class="stack-tag">EfficientNetB0</span>
             <span class="stack-tag">Grad-CAM</span>
-            <span class="stack-tag">FastAPI</span>
-            <span class="stack-tag">Docker</span>
           </div>
           <div class="project-links">
             <a href="https://github.com/CodeClosed/Cloud-Project" target="_blank" rel="noopener noreferrer" class="link-action">
@@ -750,6 +764,85 @@
           </div>
           <div class="project-links">
             <a href="https://github.com/CodeClosed/website" target="_blank" rel="noopener noreferrer" class="link-action">
+              <span>View Source Code</span>
+              <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 9: New Tab Dashboard -->
+        <article class="project-editorial-item" data-category="frontend">
+          <div class="project-meta-row">
+            <span class="project-index">09</span>
+            <span class="project-category">Browser Extension &amp; UI</span>
+            <span class="badge-pill">Manifest V3</span>
+          </div>
+          <h3 class="project-title">New Tab Dashboard (Brave &amp; Chrome Extension)</h3>
+          <p class="project-description">
+            A local-first, customizable New Tab extension for Brave and Chrome built with Manifest V3. Features a two-stage glass architecture, frosted glass collections hub, tabbed stack view, free-drag widget repositioning, floating dock, multiple Spaces, and automated snapshots with zero telemetry.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">Manifest V3</span>
+            <span class="stack-tag">JavaScript ES6+</span>
+            <span class="stack-tag">CSS3</span>
+            <span class="stack-tag">HTML5</span>
+            <span class="stack-tag">Chrome Extension API</span>
+            <span class="stack-tag">Local-First Storage</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/CodeClosed/brave-newtab-dashboard" target="_blank" rel="noopener noreferrer" class="link-action">
+              <span>View Source Code</span>
+              <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 10: University Healthcare & Research Management System -->
+        <article class="project-editorial-item" data-category="fullstack">
+          <div class="project-meta-row">
+            <span class="project-index">10</span>
+            <span class="project-category">Relational Database Architecture</span>
+            <span class="badge-pill">3NF / BCNF</span>
+          </div>
+          <h3 class="project-title">University Healthcare &amp; Research Management System</h3>
+          <p class="project-description">
+            Comprehensive RDBMS architecture featuring Enhanced Entity-Relationship (EER) modeling, strict 3NF/BCNF relational schema conversion, and analytical SQL DDL/DML scripts for PostgreSQL and MySQL.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">PostgreSQL</span>
+            <span class="stack-tag">MySQL</span>
+            <span class="stack-tag">EER Modeling</span>
+            <span class="stack-tag">3NF / BCNF</span>
+            <span class="stack-tag">SQL DDL &amp; DML</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/CodeClosed/University-Healthcare-and-Research-Management-System" target="_blank" rel="noopener noreferrer" class="link-action">
+              <span>View Source Code</span>
+              <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+            </a>
+          </div>
+        </article>
+
+        <!-- Project 11: GitHub Copilot Proficient Kit -->
+        <article class="project-editorial-item" data-category="ai">
+          <div class="project-meta-row">
+            <span class="project-index">11</span>
+            <span class="project-category">AI Developer Tooling</span>
+            <span class="badge-pill">MCP &bull; Copilot SDK</span>
+          </div>
+          <h3 class="project-title">GitHub Copilot Proficient Kit</h3>
+          <p class="project-description">
+            Project customization suite for GitHub Copilot featuring custom @architect agent definitions, reusable /refactor and /review prompt workflows, Agent Skills, Model Context Protocol (MCP) server configurations, and Copilot SDK/API integration.
+          </p>
+          <div class="project-stack">
+            <span class="stack-tag">GitHub Copilot SDK</span>
+            <span class="stack-tag">Model Context Protocol (MCP)</span>
+            <span class="stack-tag">JavaScript</span>
+            <span class="stack-tag">PowerShell</span>
+            <span class="stack-tag">VS Code</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/CodeClosed/copilot-proficient-kit" target="_blank" rel="noopener noreferrer" class="link-action">
               <span>View Source Code</span>
               <span class="arrow" aria-hidden="true"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
             </a>
