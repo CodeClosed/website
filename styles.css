@@ -77,6 +77,10 @@
   --accent-success-border: rgba(74, 222, 128, 0.26);
 }
 
+[data-theme="dark"] .btn-primary {
+  color: var(--text-inverse);
+}
+
 /* --------------------------------------------------------------------------
    2. RESET, BASE & ACCESSIBILITY UTILITIES
    -------------------------------------------------------------------------- */
@@ -191,6 +195,30 @@ summary:focus-visible,
   display: inline-block;
   flex-shrink: 0;
   vertical-align: middle;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.stretched-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.stretched-link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -394,6 +422,9 @@ summary:focus-visible,
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  transition: opacity var(--duration-base) var(--ease-out),
+              transform var(--duration-base) var(--ease-out),
+              visibility 0s;
 }
 
 .mobile-nav-list {
@@ -450,6 +481,10 @@ summary:focus-visible,
 .content-section {
   padding: 72px 0 48px;
   border-bottom: 1px solid var(--border-subtle);
+}
+
+main > section[id] {
+  scroll-margin-top: calc(var(--header-height) + 16px);
 }
 
 .content-section:last-of-type {
@@ -572,7 +607,9 @@ summary:focus-visible,
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  min-height: 40px;
   background: var(--accent-primary);
   color: #ffffff;
   text-decoration: none;
@@ -602,10 +639,13 @@ summary:focus-visible,
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  min-height: 40px;
   background: var(--bg-surface);
   border: 1px solid var(--border-default);
   color: var(--text-primary);
+  text-decoration: none;
   font-family: var(--font-sans);
   font-size: 0.875rem;
   font-weight: 500;
@@ -686,24 +726,27 @@ summary:focus-visible,
 /* --------------------------------------------------------------------------
    6. ABOUT SECTION
    -------------------------------------------------------------------------- */
-.about-editorial-columns {
+.editorial-prose {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 40px;
+  gap: 36px;
   margin-bottom: 32px;
 }
 
+.editorial-prose p,
 .about-editorial-columns p {
   color: var(--text-secondary);
   font-size: 1rem;
   line-height: 1.78;
-  margin-bottom: 16px;
+  margin-bottom: 0;
 }
 
+.editorial-prose p:last-child,
 .about-editorial-columns p:last-child {
   margin-bottom: 0;
 }
 
+.editorial-prose p:first-of-type::first-letter,
 .drop-cap {
   float: left;
   font-family: var(--font-serif);
@@ -713,15 +756,12 @@ summary:focus-visible,
   color: var(--text-primary);
   padding-top: 4px;
   padding-right: 10px;
+  font-optical-sizing: auto;
 }
 
 .editorial-highlight {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text-primary);
-  text-decoration: underline;
-  text-decoration-color: var(--accent-border);
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
 }
 
 .about-dossier-row {
@@ -800,18 +840,6 @@ summary:focus-visible,
   content: "";
 }
 
-.exp-accordion-header * {
-  pointer-events: none;
-}
-
-.exp-accordion-header a,
-.exp-company a {
-  pointer-events: auto;
-  cursor: pointer;
-  position: relative;
-  z-index: 5;
-}
-
 .exp-accordion-header:hover {
   background-color: var(--bg-subtle);
 }
@@ -822,6 +850,11 @@ summary:focus-visible,
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 16px;
+}
+
+.exp-role-meta {
+  flex: 1 1 280px;
+  min-width: 0;
 }
 
 .exp-badge {
@@ -885,6 +918,7 @@ summary:focus-visible,
   flex-direction: column;
   align-items: flex-end;
   gap: 10px;
+  flex-shrink: 0;
 }
 
 .exp-period {
@@ -1179,6 +1213,10 @@ details[open] .toggle-icon {
   border-color: var(--border-strong);
 }
 
+.project-card-featured {
+  grid-column: 1 / -1;
+}
+
 .project-meta-row {
   display: flex;
   align-items: center;
@@ -1310,9 +1348,9 @@ details[open] .toggle-icon {
 }
 
 .timeline-row {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -1326,8 +1364,10 @@ details[open] .toggle-icon {
 
 .timeline-meta {
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
 
 .timeline-year {
@@ -1340,7 +1380,6 @@ details[open] .toggle-icon {
 
 .timeline-gpa-badge {
   display: inline-block;
-  align-self: flex-start;
   font-family: var(--font-mono);
   font-size: 0.72rem;
   font-weight: 500;
@@ -1397,6 +1436,7 @@ details[open] .toggle-icon {
 }
 
 .cert-item-card {
+  position: relative;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -1411,6 +1451,7 @@ details[open] .toggle-icon {
 }
 
 .cert-item-card:hover,
+.cert-item-card:focus-within,
 .cert-item-card:focus-visible {
   border-color: var(--border-default);
 }
@@ -1499,6 +1540,7 @@ details[open] .toggle-icon {
 }
 
 .contact-tile-card {
+  position: relative;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -1513,6 +1555,7 @@ details[open] .toggle-icon {
 }
 
 .contact-tile-card:hover,
+.contact-tile-card:focus-within,
 .contact-tile-card:focus-visible {
   border-color: var(--border-default);
 }
@@ -1665,7 +1708,7 @@ details[open] .toggle-icon {
 /* --------------------------------------------------------------------------
    16. RESPONSIVE BREAKPOINTS (Down to 320px, Zero Horizontal Overflow)
    -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
+@media (max-width: 1023px) {
   .certs-editorial-grid,
   .contact-cards-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1697,6 +1740,7 @@ details[open] .toggle-icon {
     border-bottom: 1px solid var(--border-subtle);
   }
 
+  .editorial-prose,
   .about-editorial-columns {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1736,8 +1780,7 @@ details[open] .toggle-icon {
   }
 
   .timeline-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 10px;
     padding: 20px;
   }
 }
@@ -1764,8 +1807,25 @@ details[open] .toggle-icon {
   }
 
   .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
     gap: 10px 12px;
     margin-bottom: 36px;
+  }
+
+  .hero-actions .btn-primary {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .hero-actions .btn-secondary {
+    flex: 1 1 calc(50% - 6px);
+    min-height: 44px;
+  }
+
+  .hero-actions .btn-link {
+    min-height: 36px;
+    padding: 6px 8px;
   }
 
   .metric-item {
@@ -1889,8 +1949,13 @@ details[open] .toggle-icon {
   .toast-popup,
   .hero-actions,
   .exp-toggle-indicator,
+  .footer-links,
   .hero-section::before {
     display: none !important;
+  }
+
+  .filter-item-hidden {
+    display: revert !important;
   }
 
   .main-layout {

@@ -39,23 +39,38 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --------------------------------------------------------------------------
-  // 2. MOBILE NAVIGATION DRAWER
+  // 2. MOBILE NAVIGATION DRAWER (Focus management, Tab trap, Escape)
   // --------------------------------------------------------------------------
   const mobileNavToggle = document.getElementById('mobileNavToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
-  function setMobileMenuState(isOpen) {
+  function getMobileMenuFocusables() {
+    if (!mobileMenu) return [];
+    return Array.from(
+      mobileMenu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter((el) => !el.hasAttribute('hidden'));
+  }
+
+  function setMobileMenuState(isOpen, { restoreFocus = false } = {}) {
     if (!mobileNavToggle || !mobileMenu) return;
     mobileMenu.classList.toggle('open', isOpen);
     mobileNavToggle.classList.toggle('active', isOpen);
     document.body.classList.toggle('menu-open', isOpen);
     mobileNavToggle.setAttribute('aria-expanded', String(isOpen));
     mobileMenu.setAttribute('aria-hidden', String(!isOpen));
+
     if (isOpen) {
       mobileMenu.removeAttribute('inert');
+      const focusables = getMobileMenuFocusables();
+      if (focusables.length > 0) {
+        requestAnimationFrame(() => focusables[0].focus({ preventScroll: true }));
+      }
     } else {
       mobileMenu.setAttribute('inert', '');
+      if (restoreFocus) {
+        mobileNavToggle.focus();
+      }
     }
   }
 
@@ -63,12 +78,12 @@ document.addEventListener('DOMContentLoaded', () => {
     mobileNavToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = !mobileMenu.classList.contains('open');
-      setMobileMenuState(isOpen);
+      setMobileMenuState(isOpen, { restoreFocus: !isOpen });
     });
 
     mobileLinks.forEach((link) => {
       link.addEventListener('click', () => {
-        setMobileMenuState(false);
+        setMobileMenuState(false, { restoreFocus: false });
       });
     });
 
@@ -78,14 +93,35 @@ document.addEventListener('DOMContentLoaded', () => {
         !mobileMenu.contains(e.target) &&
         !mobileNavToggle.contains(e.target)
       ) {
-        setMobileMenuState(false);
+        setMobileMenuState(false, { restoreFocus: false });
       }
     });
 
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileMenu.classList.contains('open')) {
-        setMobileMenuState(false);
-        mobileNavToggle.focus();
+      if (!mobileMenu.classList.contains('open')) return;
+
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        setMobileMenuState(false, { restoreFocus: true });
+        return;
+      }
+
+      if (e.key === 'Tab') {
+        const focusables = getMobileMenuFocusables();
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey) {
+          if (document.activeElement === first || !mobileMenu.contains(document.activeElement)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else if (document.activeElement === last || !mobileMenu.contains(document.activeElement)) {
+          e.preventDefault();
+          first.focus();
+        }
       }
     });
   }
@@ -188,6 +224,12 @@ document.addEventListener('DOMContentLoaded', () => {
       targetItems = document.querySelectorAll('.timeline-editorial .timeline-row');
     }
 
+    const statusEl =
+      document.getElementById(`${group}FilterStatus`) ||
+      (bar.nextElementSibling && bar.nextElementSibling.classList.contains('filter-status')
+        ? bar.nextElementSibling
+        : bar.parentElement?.querySelector('.filter-status'));
+
     buttons.forEach((btn, idx) => {
       btn.addEventListener('click', () => {
         buttons.forEach((b) => {
@@ -198,10 +240,12 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.setAttribute('aria-pressed', 'true');
 
         const filterValue = btn.getAttribute('data-filter');
+        const visibleItems = [];
 
         targetItems.forEach((item) => {
           const itemCategory = item.getAttribute('data-category');
           if (filterValue === 'all' || itemCategory === filterValue) {
+            visibleItems.push(item);
             item.classList.remove('filter-item-hidden');
             item.classList.remove('filter-item-fade');
             if (!prefersReducedMotion.matches) {
@@ -213,6 +257,19 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.remove('filter-item-fade');
           }
         });
+
+        if (group === 'projects') {
+          targetItems.forEach((item) => item.classList.remove('project-card-featured'));
+          if (visibleItems.length % 2 === 1 && visibleItems[0]) {
+            visibleItems[0].classList.add('project-card-featured');
+          }
+        }
+
+        const visibleCount = visibleItems.length;
+        if (statusEl) {
+          const filterLabel = btn.textContent.trim();
+          statusEl.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'item' : 'items'} for ${filterLabel}.`;
+        }
       });
 
       btn.addEventListener('keydown', (e) => {
@@ -248,13 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const summaryLinks = document.querySelectorAll('.exp-accordion-header a');
-  summaryLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-  });
-
   let printAccordionStates = [];
   window.addEventListener('beforeprint', () => {
     printAccordionStates = Array.from(accordions).map((acc) => {
@@ -271,18 +321,8 @@ document.addEventListener('DOMContentLoaded', () => {
     printAccordionStates = [];
   });
 
-  const printPdfBtn = document.getElementById('printPdfBtn');
-  if (printPdfBtn) {
-    printPdfBtn.addEventListener('click', () => {
-      showToast('Preparing print view...');
-      setTimeout(() => {
-        window.print();
-      }, 150);
-    });
-  }
-
   // --------------------------------------------------------------------------
-  // 7. ACTIVE NAV SCROLL-SPY (IntersectionObserver)
+  // 7. ACTIVE NAV SCROLL-SPY (Hardened for tall #projects & bottom #contact)
   // --------------------------------------------------------------------------
   const spySections = Array.from(document.querySelectorAll('main > section[id]'));
   const navLinksAll = document.querySelectorAll('.site-nav .nav-link, #mobileMenu .mobile-nav-link');
@@ -300,35 +340,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  if ('IntersectionObserver' in window && spySections.length > 0) {
-    const visibleRatios = new Map();
-    const spyObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          visibleRatios.set(entry.target.id, entry.isIntersecting ? entry.intersectionRatio : 0);
-        });
+  function updateScrollSpy() {
+    if (spySections.length === 0) return;
 
-        let activeId = null;
-        let maxRatio = 0;
-        for (const sec of spySections) {
-          const ratio = visibleRatios.get(sec.id) || 0;
-          if (ratio > maxRatio) {
-            maxRatio = ratio;
-            activeId = sec.id;
-          }
-        }
+    const atBottom =
+      window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4;
+    if (atBottom) {
+      setActiveNavLink(spySections[spySections.length - 1].id);
+      return;
+    }
 
-        if (activeId) {
-          setActiveNavLink(activeId);
-        }
-      },
-      {
-        rootMargin: '-70px 0px -45% 0px',
-        threshold: [0, 0.15, 0.35, 0.6]
+    const triggerOffset = 140;
+    let activeId = spySections[0].id;
+    for (const sec of spySections) {
+      if (sec.getBoundingClientRect().top <= triggerOffset) {
+        activeId = sec.id;
+      } else {
+        break;
       }
-    );
+    }
 
-    spySections.forEach((sec) => spyObserver.observe(sec));
+    setActiveNavLink(activeId);
+  }
+
+  if (spySections.length > 0) {
+    let spyTicking = false;
+    const onScrollOrResize = () => {
+      if (spyTicking) return;
+      spyTicking = true;
+      requestAnimationFrame(() => {
+        updateScrollSpy();
+        spyTicking = false;
+      });
+    };
+
+    window.addEventListener('scroll', onScrollOrResize, { passive: true });
+    window.addEventListener('resize', onScrollOrResize, { passive: true });
+    window.addEventListener('hashchange', updateScrollSpy);
+    updateScrollSpy();
   }
 
   // --------------------------------------------------------------------------
@@ -336,16 +385,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // --------------------------------------------------------------------------
   const revealTargets = Array.from(document.querySelectorAll('.content-section'));
 
+  function revealAtOrAbove(limitTop) {
+    revealTargets.forEach((el) => {
+      if (el.classList.contains('is-visible')) return;
+      const docTop = el.getBoundingClientRect().top + window.scrollY;
+      if (docTop <= limitTop) {
+        el.classList.add('is-visible');
+      }
+    });
+  }
+
   if (!prefersReducedMotion.matches && 'IntersectionObserver' in window && revealTargets.length > 0) {
     htmlRoot.classList.add('reveal-enabled');
 
     revealTargets.forEach((el) => {
       el.classList.add('reveal-target');
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight * 0.95) {
-        el.classList.add('is-visible');
-      }
     });
+
+    const hashTarget = window.location.hash ? document.querySelector(window.location.hash) : null;
+    const initialLimitTop = Math.max(
+      window.scrollY + window.innerHeight * 0.95,
+      hashTarget ? hashTarget.getBoundingClientRect().top + window.scrollY + 100 : 0
+    );
+    revealAtOrAbove(initialLimitTop);
 
     const revealObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -367,5 +429,11 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
       }
     });
+
+    const syncRevealsOnJump = () => {
+      revealAtOrAbove(window.scrollY + window.innerHeight * 0.98);
+    };
+    window.addEventListener('load', syncRevealsOnJump);
+    window.addEventListener('hashchange', syncRevealsOnJump);
   }
 });

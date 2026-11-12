@@ -1,6 +1,7 @@
 {
     "name": "Vihaan Varshney",
     "short_name": "Vihaan",
+    "start_url": "/",
     "icons": [
         {
             "src": "android-chrome-192x192.png",
@@ -13,7 +14,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#fafaf9",
+    "background_color": "#fafaf9",
     "display": "standalone"
 }
