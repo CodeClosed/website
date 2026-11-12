@@ -1796,6 +1796,156 @@ details[open] .toggle-icon {
   color: var(--text-secondary);
 }
 
+/* Clickable Project Stack Tags & Active Tag Banner */
+.projects-editorial-list .stack-tag {
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out),
+              background-color var(--duration-fast) var(--ease-out);
+}
+
+.projects-editorial-list .stack-tag:hover,
+.projects-editorial-list .stack-tag:focus-visible {
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+
+.projects-editorial-list .stack-tag.active-tag {
+  color: var(--accent-primary);
+  background: var(--accent-subtle);
+  border-color: var(--accent-border);
+}
+
+.active-tag-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.active-tag-banner[hidden] {
+  display: none;
+}
+
+.active-tag-clear-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  background: transparent;
+  border: 1px solid var(--accent-border);
+  border-radius: var(--radius-pill);
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.active-tag-clear-btn:hover {
+  background: var(--accent-subtle);
+}
+
+/* Section Anchor (#) Copy Button */
+.section-heading {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.section-anchor-btn {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-out),
+              color var(--duration-fast) var(--ease-out);
+}
+
+.section-heading:hover .section-anchor-btn,
+.section-heading:focus-within .section-anchor-btn,
+.section-anchor-btn:focus-visible {
+  opacity: 1;
+}
+
+.section-anchor-btn:hover {
+  color: var(--accent-primary);
+}
+
+@media (hover: none) {
+  .section-anchor-btn {
+    opacity: 0.65;
+  }
+}
+
+/* Resume Preview Modal (<dialog>) */
+.resume-modal {
+  margin: auto;
+  width: min(920px, 94vw);
+  height: min(86vh, 880px);
+  padding: 0;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.resume-modal[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.resume-modal::backdrop {
+  background: rgba(9, 9, 11, 0.65);
+  backdrop-filter: blur(4px);
+}
+
+.resume-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+}
+
+.resume-modal-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-sm {
+  min-height: 32px;
+  padding: 6px 12px;
+  font-size: 0.78rem;
+}
+
+.resume-modal-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #ffffff;
+}
+
 /* --------------------------------------------------------------------------
    15. SITE FOOTER
    -------------------------------------------------------------------------- */
@@ -2088,6 +2238,9 @@ details[open] .toggle-icon {
   .site-header,
   .mobile-menu,
   .filter-pills-bar,
+  .active-tag-banner,
+  .section-anchor-btn,
+  .resume-modal,
   .toast-popup,
   .back-to-top-btn,
   .hero-actions,

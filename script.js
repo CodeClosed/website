@@ -259,6 +259,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (group === 'projects') {
+        activeProjectTag = null;
+        if (typeof renderActiveTagBanner === 'function') renderActiveTagBanner();
+        document.querySelectorAll('.projects-editorial-list .stack-tag.active-tag').forEach((t) => {
+          t.classList.remove('active-tag');
+        });
         targetItems.forEach((item) => item.classList.remove('project-card-featured'));
         if (visibleItems.length % 2 === 1 && visibleItems[0]) {
           visibleItems[0].classList.add('project-card-featured');
@@ -495,5 +500,136 @@ document.addEventListener('DOMContentLoaded', () => {
         showToast('Downloading Resume.pdf');
       }
     }
+  });
+
+  // --------------------------------------------------------------------------
+  // 9. CLICKABLE PROJECT STACK TAGS
+  // --------------------------------------------------------------------------
+  let activeProjectTag = null;
+  const activeTagBanner = document.getElementById('activeTagBanner');
+  const projectCards = Array.from(document.querySelectorAll('.projects-editorial-list .project-editorial-item'));
+  const projectFilterButtons = Array.from(document.querySelectorAll('.filter-pills-bar[data-filter-group="projects"] .filter-pill-btn'));
+  const projectsStatusEl = document.getElementById('projectsFilterStatus');
+
+  function renderActiveTagBanner() {
+    if (!activeTagBanner) return;
+    if (!activeProjectTag) {
+      activeTagBanner.hidden = true;
+      activeTagBanner.innerHTML = '';
+      return;
+    }
+    const count = projectCards.filter((c) => !c.classList.contains('filter-item-hidden')).length;
+    activeTagBanner.hidden = false;
+    activeTagBanner.innerHTML = `<span>Filtered by tech tag: <strong></strong> (${count} ${count === 1 ? 'project' : 'projects'})</span><button type="button" class="active-tag-clear-btn">Clear filter</button>`;
+    activeTagBanner.querySelector('strong').textContent = activeProjectTag;
+    activeTagBanner.querySelector('.active-tag-clear-btn').addEventListener('click', () => {
+      const allBtn = projectFilterButtons.find((b) => b.getAttribute('data-filter') === 'all');
+      if (allBtn) allBtn.click();
+    });
+  }
+
+  function filterProjectsByTag(tagText) {
+    if (activeProjectTag === tagText) {
+      const allBtn = projectFilterButtons.find((b) => b.getAttribute('data-filter') === 'all');
+      if (allBtn) allBtn.click();
+      return;
+    }
+    activeProjectTag = tagText;
+    projectFilterButtons.forEach((b) => {
+      b.classList.remove('active');
+      b.setAttribute('aria-pressed', 'false');
+    });
+
+    const visible = [];
+    projectCards.forEach((card) => {
+      card.classList.remove('project-card-featured');
+      const tags = Array.from(card.querySelectorAll('.stack-tag'));
+      const matches = tags.some((t) => t.textContent.trim() === tagText);
+      tags.forEach((t) => t.classList.toggle('active-tag', t.textContent.trim() === tagText));
+      if (matches) {
+        visible.push(card);
+        card.classList.remove('filter-item-hidden');
+      } else {
+        card.classList.add('filter-item-hidden');
+      }
+    });
+
+    if (visible.length % 2 === 1 && visible[0]) {
+      visible[0].classList.add('project-card-featured');
+    }
+
+    renderActiveTagBanner();
+    if (projectsStatusEl) {
+      projectsStatusEl.textContent = `Showing ${visible.length} ${visible.length === 1 ? 'project' : 'projects'} tagged ${tagText}.`;
+    }
+  }
+
+  document.querySelectorAll('.projects-editorial-list .stack-tag').forEach((tag) => {
+    const label = tag.textContent.trim();
+    tag.setAttribute('role', 'button');
+    tag.setAttribute('tabindex', '0');
+    tag.setAttribute('aria-label', `Filter projects by ${label}`);
+    tag.addEventListener('click', () => filterProjectsByTag(label));
+    tag.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        filterProjectsByTag(label);
+      }
+    });
+  });
+
+  // --------------------------------------------------------------------------
+  // 10. IN-PAGE RESUME PREVIEW MODAL
+  // --------------------------------------------------------------------------
+  const previewResumeBtn = document.getElementById('previewResumeBtn');
+  const resumePreviewModal = document.getElementById('resumePreviewModal');
+  const closeResumeModalBtn = document.getElementById('closeResumeModalBtn');
+  const resumePreviewFrame = document.getElementById('resumePreviewFrame');
+
+  if (previewResumeBtn && resumePreviewModal && typeof resumePreviewModal.showModal === 'function') {
+    previewResumeBtn.addEventListener('click', () => {
+      if (resumePreviewFrame && !resumePreviewFrame.getAttribute('src')) {
+        resumePreviewFrame.setAttribute('src', 'Resume.pdf#view=FitH');
+      }
+      resumePreviewModal.showModal();
+    });
+
+    if (closeResumeModalBtn) {
+      closeResumeModalBtn.addEventListener('click', () => resumePreviewModal.close());
+    }
+
+    resumePreviewModal.addEventListener('click', (e) => {
+      if (e.target === resumePreviewModal) {
+        resumePreviewModal.close();
+      }
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // 11. SECTION ANCHOR (#) SHARE LINKS
+  // --------------------------------------------------------------------------
+  document.querySelectorAll('main > section[id] .section-heading').forEach((heading) => {
+    const section = heading.closest('section[id]');
+    if (!section) return;
+    const sectionId = section.getAttribute('id');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'section-anchor-btn';
+    btn.textContent = '#';
+    btn.setAttribute('aria-label', `Copy link to ${heading.textContent.trim()} section`);
+    btn.title = 'Copy section link';
+    btn.addEventListener('click', () => {
+      const shareUrl = `${window.location.origin}${window.location.pathname}#${sectionId}`;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(shareUrl).then(() => {
+          showToast('Copied section link');
+        }).catch(() => {
+          showToast(`#${sectionId}`);
+        });
+      } else {
+        showToast(`#${sectionId}`);
+      }
+    });
+    heading.appendChild(btn);
   });
 });
