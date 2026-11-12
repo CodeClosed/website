@@ -167,6 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     btn.addEventListener('click', (e) => {
       e.preventDefault();
+      e.stopPropagation();
       const email = btn.getAttribute('data-email') || 'vihaan.varshney@outlook.com';
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(email).then(() => {
@@ -230,47 +231,59 @@ document.addEventListener('DOMContentLoaded', () => {
         ? bar.nextElementSibling
         : bar.parentElement?.querySelector('.filter-status'));
 
-    buttons.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        buttons.forEach((b) => {
-          b.classList.remove('active');
-          b.setAttribute('aria-pressed', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
+    function applyFilter(btn, syncUrl = true) {
+      buttons.forEach((b) => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
-        const filterValue = btn.getAttribute('data-filter');
-        const visibleItems = [];
+      const filterValue = btn.getAttribute('data-filter');
+      const visibleItems = [];
 
-        targetItems.forEach((item) => {
-          const itemCategory = item.getAttribute('data-category');
-          if (filterValue === 'all' || itemCategory === filterValue) {
-            visibleItems.push(item);
-            item.classList.remove('filter-item-hidden');
-            item.classList.remove('filter-item-fade');
-            if (!prefersReducedMotion.matches) {
-              void item.offsetWidth;
-              item.classList.add('filter-item-fade');
-            }
-          } else {
-            item.classList.add('filter-item-hidden');
-            item.classList.remove('filter-item-fade');
+      targetItems.forEach((item) => {
+        const itemCategory = item.getAttribute('data-category');
+        if (filterValue === 'all' || itemCategory === filterValue) {
+          visibleItems.push(item);
+          item.classList.remove('filter-item-hidden');
+          item.classList.remove('filter-item-fade');
+          if (!prefersReducedMotion.matches) {
+            void item.offsetWidth;
+            item.classList.add('filter-item-fade');
           }
-        });
-
-        if (group === 'projects') {
-          targetItems.forEach((item) => item.classList.remove('project-card-featured'));
-          if (visibleItems.length % 2 === 1 && visibleItems[0]) {
-            visibleItems[0].classList.add('project-card-featured');
-          }
-        }
-
-        const visibleCount = visibleItems.length;
-        if (statusEl) {
-          const filterLabel = btn.textContent.trim();
-          statusEl.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'item' : 'items'} for ${filterLabel}.`;
+        } else {
+          item.classList.add('filter-item-hidden');
+          item.classList.remove('filter-item-fade');
         }
       });
+
+      if (group === 'projects') {
+        targetItems.forEach((item) => item.classList.remove('project-card-featured'));
+        if (visibleItems.length % 2 === 1 && visibleItems[0]) {
+          visibleItems[0].classList.add('project-card-featured');
+        }
+      }
+
+      if (syncUrl && group && window.history && window.history.replaceState) {
+        const url = new URL(window.location.href);
+        if (!filterValue || filterValue === 'all') {
+          url.searchParams.delete(group);
+        } else {
+          url.searchParams.set(group, filterValue);
+        }
+        window.history.replaceState(null, '', `${url.pathname}${url.search}${url.hash}`);
+      }
+
+      const visibleCount = visibleItems.length;
+      if (statusEl) {
+        const filterLabel = btn.textContent.trim();
+        statusEl.textContent = `Showing ${visibleCount} ${visibleCount === 1 ? 'item' : 'items'} for ${filterLabel}.`;
+      }
+    }
+
+    buttons.forEach((btn, idx) => {
+      btn.addEventListener('click', () => applyFilter(btn, true));
 
       btn.addEventListener('keydown', (e) => {
         let nextIdx = null;
@@ -290,6 +303,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
+
+    if (group) {
+      const initialFilter = new URLSearchParams(window.location.search).get(group);
+      if (initialFilter) {
+        const initialBtn = buttons.find((b) => b.getAttribute('data-filter') === initialFilter);
+        if (initialBtn) applyFilter(initialBtn, false);
+      }
+    }
   });
 
   // --------------------------------------------------------------------------
@@ -436,4 +457,43 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('load', syncRevealsOnJump);
     window.addEventListener('hashchange', syncRevealsOnJump);
   }
+
+  // --------------------------------------------------------------------------
+  // 8. BACK TO TOP BUTTON & KEYBOARD SHORTCUTS (T = Theme, D = Resume)
+  // --------------------------------------------------------------------------
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (backToTopBtn) {
+    const updateBackToTop = () => {
+      backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+    };
+    window.addEventListener('scroll', updateBackToTop, { passive: true });
+    updateBackToTop();
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: prefersReducedMotion.matches ? 'auto' : 'smooth'
+      });
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    const target = e.target;
+    if (target && (target.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/i.test(target.tagName))) {
+      return;
+    }
+    if (mobileMenu && mobileMenu.classList.contains('open')) return;
+
+    const key = e.key.toLowerCase();
+    if (key === 't' && themeToggleBtn) {
+      themeToggleBtn.click();
+    } else if (key === 'd') {
+      const resumeLink = document.querySelector('a[href="Resume.pdf"][download]');
+      if (resumeLink) {
+        resumeLink.click();
+        showToast('Downloading Resume.pdf');
+      }
+    }
+  });
 });

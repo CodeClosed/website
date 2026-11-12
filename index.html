@@ -999,7 +999,13 @@
           <div class="tile-body">
             <span class="tile-tag">EMAIL</span>
             <h3 class="tile-title"><a href="mailto:vihaan.varshney@outlook.com" class="stretched-link">vihaan.varshney@outlook.com</a></h3>
-            <span class="tile-action-label" aria-hidden="true">Send Direct Email <span class="arrow"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span>
+            <div class="tile-actions-row">
+              <span class="tile-action-label" aria-hidden="true">Send Direct Email <span class="arrow"><svg class="lucide-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></span>
+              <button type="button" class="tile-copy-btn copy-email-btn" data-email="vihaan.varshney@outlook.com" aria-label="Copy email address">
+                <svg class="lucide-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy</span>
+              </button>
+            </div>
           </div>
         </article>
 
@@ -1043,6 +1049,11 @@
   <div id="toastNotification" class="toast-popup" role="status" aria-live="polite">
     <span id="toastMessage">Email copied to clipboard</span>
   </div>
+
+  <!-- Back to Top Button -->
+  <button type="button" id="backToTopBtn" class="back-to-top-btn" aria-label="Back to top" title="Back to top">
+    <svg class="lucide-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
 
   <!-- Minimalist Site Footer -->
   <footer class="site-footer">
